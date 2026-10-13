@@ -1,0 +1,404 @@
+/* =========================================================================
+   build-pc.css - Định kiểu Quản lý Build PC Admin TDT Shop
+   ========================================================================= */
+
+.build-pc-admin-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.form-grid-3 {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 768px) {
+  .form-grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.components-picker-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  background-color: #f8fafc;
+  padding: 18px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+}
+
+.pc-components-tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  max-width: 480px;
+}
+
+.pc-comp-tag {
+  font-size: 11px;
+  background-color: #f1f5f9;
+  color: #334155;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pc-comp-tag strong {
+  color: var(--primary);
+}
+
+/* =========================================================================
+   POPUP KIỂM TRA ĐỘ TƯƠNG THÍCH LINH KIỆN (COMPATIBILITY MODAL)
+   ========================================================================= */
+.build-compat-backdrop {
+  z-index: 1200 !important;
+  background-color: rgba(15, 23, 42, 0.75) !important;
+  backdrop-filter: blur(6px) !important;
+}
+
+.modal-compat-card {
+  max-width: 620px !important;
+  width: 94%;
+  border-radius: 16px !important;
+  box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.45) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  animation: compatModalZoom 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+@keyframes compatModalZoom {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.compat-hero-banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 24px 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+}
+
+.compat-hero-banner.is-success {
+  background: linear-gradient(180deg, #f0fdf4 0%, #ecfdf5 100%);
+  border-color: #bbf7d0;
+}
+
+.compat-hero-banner.is-error {
+  background: linear-gradient(180deg, #fef2f2 0%, #fff1f2 100%);
+  border-color: #fecaca;
+}
+
+.compat-hero-icon-circle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.compat-hero-banner.is-success .compat-hero-icon-circle {
+  background: #dcfce7;
+  color: #16a34a;
+  box-shadow: 0 0 0 8px #f0fdf4;
+}
+
+.compat-hero-banner.is-error .compat-hero-icon-circle {
+  background: #fee2e2;
+  color: #dc2626;
+  box-shadow: 0 0 0 8px #fef2f2;
+}
+
+.compat-hero-title {
+  font-size: 18px;
+  font-weight: 800;
+  margin: 0 0 6px 0;
+}
+
+.compat-hero-banner.is-success .compat-hero-title {
+  color: #15803d;
+}
+
+.compat-hero-banner.is-error .compat-hero-title {
+  color: #b91c1c;
+}
+
+.compat-hero-desc {
+  font-size: 13.5px;
+  color: #64748b;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.compat-wattage-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #fef3c7;
+  color: #92400e;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 20px;
+  margin-top: 10px;
+  border: 1px solid #fde68a;
+}
+
+.compat-section-title {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 16px 0 8px 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.compat-error-list,
+.compat-warning-list,
+.compat-success-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.compat-item-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.compat-item-card.is-error {
+  background: #fef2f2;
+  border-left: 4px solid #ef4444;
+  color: #991b1b;
+}
+
+.compat-item-card.is-warning {
+  background: #fffbeb;
+  border-left: 4px solid #f59e0b;
+  color: #92400e;
+}
+
+.compat-item-card.is-success {
+  background: #f0fdf4;
+  border-left: 4px solid #10b981;
+  color: #166534;
+}
+
+.compat-item-card i {
+  font-size: 15px;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+/* =========================================================================
+   KHUNG BỌC CUỘN BẢNG DÀN PC (ĐỒNG BỘ VỚI CÁC MÀN HÌNH KHÁC)
+   ========================================================================= */
+.build-pc-table-scroll-container {
+  max-height: 600px;
+  overflow-y: auto;
+  overflow-x: auto;
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: var(--radius-md, 8px);
+  background-color: #ffffff;
+  position: relative;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.build-pc-table-scroll-container table.admin-table {
+  margin-bottom: 0;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.build-pc-table-scroll-container thead th {
+  position: sticky;
+  top: 0;
+  background-color: #f8fafc;
+  z-index: 10;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+  white-space: nowrap;
+}
+
+/* =========================================================================
+   CÁC NÚT THAO TÁC TRÊN BẢNG: XEM, SỬA, ẨN/HIỆN (THỐNG NHẤT TOÀN HỆ THỐNG)
+   ========================================================================= */
+.action-btns-wrap {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 8px !important;
+  white-space: nowrap !important;
+}
+
+.btn-action {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s ease;
+  background-color: #f1f5f9;
+  color: #475569;
+  flex-shrink: 0;
+}
+
+.btn-action:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Nút xem chi tiết cấu hình */
+.btn-action.view {
+  background-color: #e0f2fe;
+  color: #0284c7;
+  border-color: #bae6fd;
+}
+
+.btn-action.view:hover {
+  background-color: #0284c7;
+  color: #ffffff;
+}
+
+/* Nút chỉnh sửa cấu hình */
+.btn-action.edit {
+  background-color: #ecfdf5;
+  color: #059669;
+  border-color: #a7f3d0;
+}
+
+.btn-action.edit:hover {
+  background-color: #059669;
+  color: #ffffff;
+}
+
+/* Nút ẩn cấu hình (Tạm ẩn / Khóa) */
+.btn-action.lock {
+  background-color: #fef2f2;
+  color: #dc2626;
+  border-color: #fecaca;
+}
+
+.btn-action.lock:hover {
+  background-color: #dc2626;
+  color: #ffffff;
+}
+
+/* Nút hiện cấu hình (Kích hoạt lại) */
+.btn-action.unlock {
+  background-color: #ecfdf5;
+  color: #059669;
+  border-color: #a7f3d0;
+}
+
+.btn-action.unlock:hover {
+  background-color: #059669;
+  color: #ffffff;
+}
+
+/* =========================================================================
+   PHÂN TRANG (PAGINATION) - ĐỒNG BỘ VỚI TẤT CẢ CÁC MÀN HÌNH ADMIN
+   ========================================================================= */
+.pagination-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0 4px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.pagination-info {
+  font-size: 13px;
+  color: var(--text-muted, #64748b);
+  font-weight: 500;
+}
+
+.pagination-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.page-btn {
+  min-width: 32px;
+  height: 32px;
+  padding: 0 6px;
+  border-radius: var(--radius-sm, 6px);
+  border: 1px solid var(--border-color, #e2e8f0);
+  background: #ffffff;
+  color: var(--text-secondary, #475569);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.page-btn:hover:not(:disabled) {
+  border-color: var(--primary, #008d94);
+  color: var(--primary, #008d94);
+  background-color: #f0fdfa;
+}
+
+.page-btn.active {
+  background-color: var(--primary, #008d94) !important;
+  border-color: var(--primary, #008d94) !important;
+  color: #ffffff !important;
+}
+
+.page-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: #f8fafc;
+}
+
+.page-ellipsis {
+  min-width: 28px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+  font-weight: 700;
+  font-size: 14px;
+  user-select: none;
+}

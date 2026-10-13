@@ -1,0 +1,1424 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/components/header.css" />
+    <link rel="stylesheet" href="/css/components/product-card.css" />
+    <link rel="stylesheet" href="/css/productDetail.css" />
+    <link rel="stylesheet" href="/css/components/footer.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <title>Chi Tiết Sản Phẩm - TTGShop</title>
+  </head>
+  <body>
+    <div id="header"></div>
+
+    <section class="section-main">
+      <div class="page">
+        <div class="container">
+          <!-- =================================================
+                 PRODUCT DETAIL
+            ================================================== -->
+
+          <div class="product-detail">
+            <!-- =================================================
+                     LEFT SIDE
+                ================================================== -->
+
+            <div class="product-left">
+              <!-- =============================================
+                         MAIN IMAGE
+                    ============================================== -->
+
+              <div class="main-image-wrapper">
+                <div class="main-image-viewport">
+                  <div class="main-image-track" id="mainImageTrack">
+                    <!-- IMAGE 01 -->
+
+                    <div class="main-image-slide" data-image-index="0">
+                      <img
+                        src="https://images.unsplash.com/photo-1591488320449-011701bb6704?w=1000"
+                        alt="PC Gaming 01"
+                      />
+                    </div>
+
+                    <!-- IMAGE 02 -->
+
+                    <div class="main-image-slide" data-image-index="1">
+                      <img
+                        src="https://images.unsplash.com/photo-1625842268584-8f3296236761?w=1000"
+                        alt="PC Gaming 02"
+                      />
+                    </div>
+
+                    <!-- IMAGE 03 -->
+
+                    <div class="main-image-slide" data-image-index="2">
+                      <img
+                        src="https://images.unsplash.com/photo-1625842268584-8f3296236761?w=1000"
+                        alt="PC Gaming 03"
+                      />
+                    </div>
+
+                    <!-- IMAGE 04 -->
+
+                    <div class="main-image-slide" data-image-index="3">
+                      <img
+                        src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=1000"
+                        alt="PC Gaming 04"
+                      />
+                    </div>
+
+                    <!-- IMAGE 05 -->
+
+                    <div class="main-image-slide" data-image-index="4">
+                      <img
+                        src="https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=1000"
+                        alt="PC Gaming 05"
+                      />
+                    </div>
+
+                    <!-- IMAGE 06 -->
+
+                    <div class="main-image-slide" data-image-index="5">
+                      <img
+                        src="https://images.unsplash.com/photo-1591488320449-011701bb6704?w=1000"
+                        alt="PC Gaming 06"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <!-- PREVIOUS -->
+
+                <button
+                  type="button"
+                  class="main-arrow main-arrow-prev"
+                  id="mainPrev"
+                  aria-label="Ảnh trước"
+                >
+                  ‹
+                </button>
+
+                <!-- NEXT -->
+
+                <button
+                  type="button"
+                  class="main-arrow main-arrow-next"
+                  id="mainNext"
+                  aria-label="Ảnh tiếp theo"
+                >
+                  ›
+                </button>
+              </div>
+
+              <!-- =============================================
+                         THUMBNAILS
+                    ============================================== -->
+
+              <div class="thumbnail-wrapper">
+                <button
+                  type="button"
+                  class="thumbnail-arrow thumbnail-prev"
+                  id="thumbnailPrev"
+                >
+                  ‹
+                </button>
+
+                <div class="thumbnail-viewport">
+                  <div class="thumbnail-track" id="thumbnailTrack">
+                    <button
+                      type="button"
+                      class="thumbnail active"
+                      data-thumbnail-index="0"
+                    >
+                      <img
+                        src="https://images.unsplash.com/photo-1591488320449-011701bb6704?w=1000"
+                        alt="Ảnh nhỏ 01"
+                      />
+                    </button>
+
+                    <button
+                      type="button"
+                      class="thumbnail"
+                      data-thumbnail-index="1"
+                    >
+                      <img
+                        src="https://images.unsplash.com/photo-1625842268584-8f3296236761?w=1000"
+                        alt="Ảnh nhỏ 02"
+                      />
+                    </button>
+
+                    <button
+                      type="button"
+                      class="thumbnail"
+                      data-thumbnail-index="2"
+                    >
+                      <img
+                        src="https://images.unsplash.com/photo-1625842268584-8f3296236761?w=1000"
+                        alt="Ảnh nhỏ 03"
+                      />
+                    </button>
+
+                    <button
+                      type="button"
+                      class="thumbnail"
+                      data-thumbnail-index="3"
+                    >
+                      <img
+                        src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=1000"
+                        alt="Ảnh nhỏ 04"
+                      />
+                    </button>
+
+                    <button
+                      type="button"
+                      class="thumbnail"
+                      data-thumbnail-index="4"
+                    >
+                      <img
+                        src="https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=1000"
+                        alt="Ảnh nhỏ 05"
+                      />
+                    </button>
+
+                    <button
+                      type="button"
+                      class="thumbnail"
+                      data-thumbnail-index="5"
+                    >
+                      <img
+                        src="https://images.unsplash.com/photo-1591488320449-011701bb6704?w=1000"
+                        alt="Ảnh nhỏ 06"
+                      />
+                    </button>
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  class="thumbnail-arrow thumbnail-next"
+                  id="thumbnailNext"
+                >
+                  ›
+                </button>
+              </div>
+
+              <!-- =============================================
+                         RELATED PRODUCTS
+                    ============================================== -->
+
+              <div class="related-section">
+                <div class="section-title">Sản phẩm mua kèm</div>
+
+                <div class="related-wrapper">
+                  <button
+                    type="button"
+                    class="related-arrow related-prev"
+                    id="relatedPrev"
+                  >
+                    ‹
+                  </button>
+
+                  <div class="related-viewport">
+                    <div class="related-track" id="relatedTrack">
+                      <!-- PRODUCT 01: MONITOR -->
+                      <div class="related-card" data-slot-type="monitor">
+                        <div class="related-image">
+                          <img
+                            src="https://images.unsplash.com/photo-1587831990711-23ca6441447b?w=1000"
+                            alt="Màn hình máy tính"
+                            data-default-src="https://images.unsplash.com/photo-1587831990711-23ca6441447b?w=1000"
+                          />
+                        </div>
+                        <div class="related-name" data-default-name="Màn hình máy tính">Màn hình máy tính</div>
+                        <div class="related-price" style="display: none;">0 ₫</div>
+                        <div class="related-actions">
+                          <button
+                            type="button"
+                            class="choose-product"
+                            data-product-type="monitor"
+                          >
+                            Chọn sản phẩm
+                          </button>
+                          <div class="addon-action-group" style="display: none;">
+                            <button
+                              type="button"
+                              class="addon-btn-change"
+                              data-product-type="monitor"
+                              title="Chọn sản phẩm khác"
+                            >
+                              ✎ Đổi sản phẩm
+                            </button>
+                            <button
+                              type="button"
+                              class="addon-btn-remove"
+                              data-product-type="monitor"
+                              title="Xoá sản phẩm mua kèm này"
+                            >
+                              🗑 Xoá
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- PRODUCT 02: KEYBOARD -->
+                      <div class="related-card" data-slot-type="keyboard">
+                        <div class="related-image">
+                          <img
+                            src="https://images.unsplash.com/photo-1587831990711-23ca6441447b?w=1000"
+                            alt="Bàn phím"
+                            data-default-src="https://images.unsplash.com/photo-1587831990711-23ca6441447b?w=1000"
+                          />
+                        </div>
+                        <div class="related-name" data-default-name="Bàn phím">Bàn phím</div>
+                        <div class="related-price" style="display: none;">0 ₫</div>
+                        <div class="related-actions">
+                          <button
+                            type="button"
+                            class="choose-product"
+                            data-product-type="keyboard"
+                          >
+                            Chọn sản phẩm
+                          </button>
+                          <div class="addon-action-group" style="display: none;">
+                            <button
+                              type="button"
+                              class="addon-btn-change"
+                              data-product-type="keyboard"
+                              title="Chọn sản phẩm khác"
+                            >
+                              ✎ Đổi sản phẩm
+                            </button>
+                            <button
+                              type="button"
+                              class="addon-btn-remove"
+                              data-product-type="keyboard"
+                              title="Xoá sản phẩm mua kèm này"
+                            >
+                              🗑 Xoá
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- PRODUCT 03: MOUSE -->
+                      <div class="related-card" data-slot-type="mouse">
+                        <div class="related-image">
+                          <img
+                            src="https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=1000"
+                            alt="Chuột"
+                            data-default-src="https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=1000"
+                          />
+                        </div>
+                        <div class="related-name" data-default-name="Chuột">Chuột</div>
+                        <div class="related-price" style="display: none;">0 ₫</div>
+                        <div class="related-actions">
+                          <button
+                            type="button"
+                            class="choose-product"
+                            data-product-type="mouse"
+                          >
+                            Chọn sản phẩm
+                          </button>
+                          <div class="addon-action-group" style="display: none;">
+                            <button
+                              type="button"
+                              class="addon-btn-change"
+                              data-product-type="mouse"
+                              title="Chọn sản phẩm khác"
+                            >
+                              ✎ Đổi sản phẩm
+                            </button>
+                            <button
+                              type="button"
+                              class="addon-btn-remove"
+                              data-product-type="mouse"
+                              title="Xoá sản phẩm mua kèm này"
+                            >
+                              🗑 Xoá
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- PRODUCT 04: HEADSET -->
+                      <div class="related-card" data-slot-type="headset">
+                        <div class="related-image">
+                          <img
+                            src="https://images.unsplash.com/photo-1591488320449-011701bb6704?w=1000"
+                            alt="Tai nghe"
+                            data-default-src="https://images.unsplash.com/photo-1591488320449-011701bb6704?w=1000"
+                          />
+                        </div>
+                        <div class="related-name" data-default-name="Tai nghe gaming">Tai nghe gaming</div>
+                        <div class="related-price" style="display: none;">0 ₫</div>
+                        <div class="related-actions">
+                          <button
+                            type="button"
+                            class="choose-product"
+                            data-product-type="headset"
+                          >
+                            Chọn sản phẩm
+                          </button>
+                          <div class="addon-action-group" style="display: none;">
+                            <button
+                              type="button"
+                              class="addon-btn-change"
+                              data-product-type="headset"
+                              title="Chọn sản phẩm khác"
+                            >
+                              ✎ Đổi sản phẩm
+                            </button>
+                            <button
+                              type="button"
+                              class="addon-btn-remove"
+                              data-product-type="headset"
+                              title="Xoá sản phẩm mua kèm này"
+                            >
+                              🗑 Xoá
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- PRODUCT 05: WEBCAM -->
+                      <div class="related-card" data-slot-type="webcam">
+                        <div class="related-image">
+                          <img
+                            src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=1000"
+                            alt="Webcam"
+                            data-default-src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=1000"
+                          />
+                        </div>
+                        <div class="related-name" data-default-name="Webcam">Webcam</div>
+                        <div class="related-price" style="display: none;">0 ₫</div>
+                        <div class="related-actions">
+                          <button
+                            type="button"
+                            class="choose-product"
+                            data-product-type="webcam"
+                          >
+                            Chọn sản phẩm
+                          </button>
+                          <div class="addon-action-group" style="display: none;">
+                            <button
+                              type="button"
+                              class="addon-btn-change"
+                              data-product-type="webcam"
+                              title="Chọn sản phẩm khác"
+                            >
+                              ✎ Đổi sản phẩm
+                            </button>
+                            <button
+                              type="button"
+                              class="addon-btn-remove"
+                              data-product-type="webcam"
+                              title="Xoá sản phẩm mua kèm này"
+                            >
+                              🗑 Xoá
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- PRODUCT 06: SPEAKER -->
+                      <div class="related-card" data-slot-type="speaker">
+                        <div class="related-image">
+                          <img
+                            src="https://images.unsplash.com/photo-1545454675-3531b543be5d?w=1000"
+                            alt="Loa"
+                            data-default-src="https://images.unsplash.com/photo-1545454675-3531b543be5d?w=1000"
+                          />
+                        </div>
+                        <div class="related-name" data-default-name="Loa máy tính">Loa máy tính</div>
+                        <div class="related-price" style="display: none;">0 ₫</div>
+                        <div class="related-actions">
+                          <button
+                            type="button"
+                            class="choose-product"
+                            data-product-type="speaker"
+                          >
+                            Chọn sản phẩm
+                          </button>
+                          <div class="addon-action-group" style="display: none;">
+                            <button
+                              type="button"
+                              class="addon-btn-change"
+                              data-product-type="speaker"
+                              title="Chọn sản phẩm khác"
+                            >
+                              ✎ Đổi sản phẩm
+                            </button>
+                            <button
+                              type="button"
+                              class="addon-btn-remove"
+                              data-product-type="speaker"
+                              title="Xoá sản phẩm mua kèm này"
+                            >
+                              🗑 Xoá
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <button
+                    type="button"
+                    class="related-arrow related-next"
+                    id="relatedNext"
+                  >
+                    ›
+                  </button>
+                </div>
+
+                <!-- COMBO SUMMARY BAR -->
+                <div class="combo-summary-box" id="comboSummaryBox">
+                  <div class="combo-summary-left">
+                    <div class="combo-label">Giá tạm tính (Combo):</div>
+                    <div class="combo-price-wrap">
+                      <span class="combo-total-price" id="comboTotalPrice">48.980.000 ₫</span>
+                      <span class="combo-original-price" id="comboOriginalPrice">49.990.000 ₫</span>
+                    </div>
+                    <div class="combo-breakdown" id="comboBreakdown">
+                      Bao gồm: <strong class="combo-main-item">1 Máy tính TTG Gaming</strong> + <span id="comboAddonCountText">0 sản phẩm mua kèm</span>
+                    </div>
+                  </div>
+                  <button type="button" class="buy-combo-btn" id="buyComboBtn">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span>MUA COMBO</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- =================================================
+                     RIGHT SIDE
+                ================================================== -->
+
+            <div class="product-right">
+              <!-- PRODUCT NAME -->
+
+              <h1 class="product-title">
+                PC TTG ULTRA GAMING i5 14400F - RTX 5070 Ti 16GB OC (Cấu hình
+                gốc)
+              </h1>
+
+              <!-- PRICE -->
+
+              <div class="price-box">
+                <div class="price">
+                  <span class="current-price"> 48.980.000 ₫ </span>
+
+                  <span class="old-price"> 49.990.000 ₫ </span>
+
+                  <span class="saving"> Tiết kiệm: 1.010.000₫ </span>
+                </div>
+
+                <div class="badge-row">
+                  <span class="warranty"> Bảo hành: 36 Tháng </span>
+                </div>
+              </div>
+
+              <!-- DESCRIPTION -->
+
+              <div class="description">
+                <h2 class="description-title">Mô tả sản phẩm</h2>
+
+                <ul class="spec-list">
+                  <li>
+                    CPU Intel Core i5 14400F (Up To 4.70GHz, 10 Nhân 16 Luồng,
+                    20MB Cache, LGA 1700 Tray)
+                  </li>
+
+                  <li>MAINBOARD SSTC B760M-HDV-D5</li>
+
+                  <li id="specListRam">RAM APACER NOX 16GB BUSS 5200MHZ DDR5 BLACK</li>
+
+                  <li id="specListSsd">
+                    Ổ cứng SSD HIKSEMI WAVE P512 500GB M.2 2280 PCIe 3.0x4
+                  </li>
+
+                  <li>
+                    Nguồn máy tính Thermalright TR-KG850 850W 80 Plus Gold
+                  </li>
+
+                  <li>
+                    Card màn hình ZOTAC GAMING GeForce RTX 5070Ti SOLID SFF OC
+                    16GB GDDR7
+                  </li>
+
+                  <li>Vỏ Case XIGMATEK AQUA ML BLACK - Kèm 3 FAN ARGB</li>
+
+                  <li id="specListCooler">Tản nhiệt khí JONSBO CR1000 EVO BLACK</li>
+                </ul>
+              </div>
+
+              <!-- UPGRADE -->
+
+              <div class="option-box">
+                <div class="option-header">⚙ &nbsp; UPGRADE</div>
+
+                <div class="option-content">
+                  <!-- RAM -->
+
+                  <div class="option-row">
+                    <div class="option-label">RAM</div>
+
+                    <div class="option-list">
+                      <button
+                        type="button"
+                        class="option selected"
+                        data-option-group="ram"
+                        data-option-value="16gb"
+                        data-price-diff="0"
+                      >
+                        RAM 16GB DDR5
+                      </button>
+
+                      <button
+                        type="button"
+                        class="option"
+                        data-option-group="ram"
+                        data-option-value="32gb"
+                        data-price-diff="1200000"
+                      >
+                        RAM 32GB DDR5 <span class="option-price-diff">(+1.200.000₫)</span>
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- SSD -->
+
+                  <div class="option-row">
+                    <div class="option-label">Ổ cứng SSD</div>
+
+                    <div class="option-list">
+                      <button
+                        type="button"
+                        class="option selected"
+                        data-option-group="ssd"
+                        data-option-value="500gb"
+                        data-price-diff="0"
+                      >
+                        SSD 500GB
+                      </button>
+
+                      <button
+                        type="button"
+                        class="option"
+                        data-option-group="ssd"
+                        data-option-value="1tb"
+                        data-price-diff="950000"
+                      >
+                        SSD 1TB <span class="option-price-diff">(+950.000₫)</span>
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- COOLER -->
+
+                  <div class="option-row">
+                    <div class="option-label">Tản nhiệt</div>
+
+                    <div class="option-list">
+                      <button
+                        type="button"
+                        class="option selected"
+                        data-option-group="cooler"
+                        data-option-value="air"
+                        data-price-diff="0"
+                      >
+                        Tản nhiệt khí
+                      </button>
+
+                      <button
+                        type="button"
+                        class="option"
+                        data-option-group="cooler"
+                        data-option-value="aio240"
+                        data-price-diff="1150000"
+                      >
+                        Tản nhiệt nước AIO 240 <span class="option-price-diff">(+1.150.000₫)</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- QUANTITY -->
+
+              <div class="quantity-row">
+                <span class="quantity-label"> Số lượng: </span>
+
+                <div class="quantity">
+                  <button type="button" id="quantityMinus">−</button>
+
+                  <span id="quantityValue"> 1 </span>
+
+                  <button type="button" id="quantityPlus">+</button>
+                </div>
+              </div>
+
+              <!-- ORDER -->
+
+              <button type="button" class="order-btn">ĐẶT HÀNG</button>
+
+              <!-- ACTIONS -->
+
+              <div class="action-row">
+                <button type="button" class="action-btn">THÊM VÀO GIỎ</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="spec-section">
+      <h2 class="spec-title">THÔNG SỐ KỸ THUẬT</h2>
+
+      <div class="spec-table-wrapper">
+        <table class="spec-table">
+          <thead>
+            <tr>
+              <th class="col-stt">STT</th>
+              <th>Mô tả thiết bị</th>
+              <th class="col-sl">SL</th>
+              <th class="col-bh">BH</th>
+            </tr>
+          </thead>
+
+          <tbody id="specTableBody">
+            <!-- DÒNG 1 -->
+            <tr>
+              <td>1</td>
+              <td>
+                CPU Intel Core i5 14400F (Up To 4.70GHz, 10 Nhân 16 Luồng, 20MB
+                Cache, LGA 1700) TRAY
+              </td>
+              <td>1</td>
+              <td>36th</td>
+            </tr>
+
+            <!-- DÒNG 2 -->
+            <tr>
+              <td>2</td>
+              <td>MAINBOARD SSTC B760M-HDV-D5</td>
+              <td>1</td>
+              <td>36th</td>
+            </tr>
+
+            <!-- DÒNG 3 -->
+            <tr>
+              <td>3</td>
+              <td id="specTableRam">RAM APACER NOX 16GB BUSS 5200MHZ DDR5 BLACK</td>
+              <td>1</td>
+              <td>36th</td>
+            </tr>
+
+            <!-- DÒNG 4 -->
+            <tr>
+              <td>4</td>
+              <td id="specTableSsd">Ổ cứng SSD HIKSEMI WAVE 512GB M.2 2280 PCIe 3.0x4</td>
+              <td>1</td>
+              <td>36th</td>
+            </tr>
+
+            <!-- DÒNG 5 -->
+            <tr>
+              <td>5</td>
+              <td>Nguồn máy tính Thermalright TR-KG850 850W 80 Plus Gold</td>
+              <td>1</td>
+              <td>36th</td>
+            </tr>
+
+            <!-- DÒNG 6 -->
+            <tr>
+              <td>6</td>
+              <td>
+                Card màn hình ZOTAC GAMING GeForce RTX 5070Ti SOLID SFF OC 16GB
+                GDDR7
+              </td>
+              <td>1</td>
+              <td>36th</td>
+            </tr>
+
+            <!-- DÒNG 7 -->
+            <tr>
+              <td>7</td>
+              <td>Vỏ Case XIGMATEK AQUA ML BLACK - KÈM 3 FAN ARGB</td>
+              <td>1</td>
+              <td>12th</td>
+            </tr>
+
+            <!-- DÒNG 8 -->
+            <tr>
+              <td>8</td>
+              <td id="specTableCooler">Tản nhiệt khí JONSBO CR1000 EVO BLACK</td>
+              <td>1</td>
+              <td>12th</td>
+            </tr>
+
+            <!-- ================================= -->
+            <!-- CÁC DÒNG BÊN DƯỚI BAN ĐẦU ẨN -->
+            <!-- ================================= -->
+
+            <!-- DÒNG 9 -->
+            <tr class="hidden-spec-row">
+              <td>9</td>
+              <td>Quạt tản nhiệt ARGB 120mm</td>
+              <td>3</td>
+              <td>12th</td>
+            </tr>
+
+            <!-- DÒNG 10 -->
+            <tr class="hidden-spec-row">
+              <td>10</td>
+              <td>Dây nguồn máy tính chuẩn 1.5m</td>
+              <td>1</td>
+              <td>12th</td>
+            </tr>
+
+            <!-- DÒNG 11 -->
+            <tr class="hidden-spec-row">
+              <td>11</td>
+              <td>Dây DisplayPort hỗ trợ độ phân giải cao</td>
+              <td>1</td>
+              <td>12th</td>
+            </tr>
+
+            <!-- DÒNG 12 -->
+            <tr class="hidden-spec-row">
+              <td>12</td>
+              <td>Keo tản nhiệt CPU cao cấp</td>
+              <td>1</td>
+              <td>12th</td>
+            </tr>
+
+            <!-- DÒNG 13 -->
+            <tr class="hidden-spec-row">
+              <td>13</td>
+              <td>Phụ kiện lắp đặt PC</td>
+              <td>1</td>
+              <td>12th</td>
+            </tr>
+
+            <!-- DÒNG 14 -->
+            <tr class="hidden-spec-row">
+              <td>14</td>
+              <td>Sách hướng dẫn sử dụng sản phẩm</td>
+              <td>1</td>
+              <td>12th</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- NÚT XEM THÊM -->
+      <button id="showMoreSpec" class="show-more-spec">
+        <span>Xem thêm</span>
+        <span class="arrow">⌄</span>
+      </button>
+    </section>
+
+    <section class="category-section">
+      <div class="category-container">
+        <div class="category-header">
+          <h2>Sản phẩm tương tự</h2>
+          <a href="/products" class="category-more"> Xem tất cả » </a>
+        </div>
+
+        <div class="category-slider">
+          <button class="category-arrow category-prev">‹</button>
+          <div class="category-products">
+            <a href="/product-detail?id=1" class="product-card">
+              <div class="product-image">
+                <img src="/assets/images/pc1.jpg" alt="PC Gaming" />
+              </div>
+
+              <div class="product-info">
+                <h3>PC TTG GAMING i5 12400F - RX 7600 8GB OC DUAL...</h3>
+
+                <div class="product-price">18.680.000 VNĐ</div>
+
+                <div class="old-price">20.990.000 VNĐ</div>
+
+                <div class="product-bottom">
+                  <button class="add-cart" onclick="event.preventDefault()">
+                    <span class="cart-icon"
+                      ><i
+                        class="fa-solid fa-cart-shopping"
+                        style="color: rgb(255, 255, 255)"
+                      ></i
+                    ></span>
+                    <span class="cart-text"> THÊM VÀO GIỎ </span>
+                  </button>
+
+                  <span class="stock"> Còn hàng </span>
+                </div>
+              </div>
+            </a>
+            <!-- CARD 2 -->
+            <a href="/product-detail?id=1" class="product-card">
+              <div class="product-image">
+                <img src="/assets/images/pc1.jpg" alt="PC Gaming" />
+              </div>
+
+              <div class="product-info">
+                <h3>PC TTG GAMING i5 12400F - RX 7600 8GB OC DUAL...</h3>
+
+                <div class="product-price">18.680.000 VNĐ</div>
+
+                <div class="old-price">20.990.000 VNĐ</div>
+
+                <div class="product-bottom">
+                  <button class="add-cart" onclick="event.preventDefault()">
+                    <span class="cart-icon"
+                      ><i
+                        class="fa-solid fa-cart-shopping"
+                        style="color: rgb(255, 255, 255)"
+                      ></i
+                    ></span>
+                    <span class="cart-text"> THÊM VÀO GIỎ </span>
+                  </button>
+
+                  <span class="stock"> Còn hàng </span>
+                </div>
+              </div>
+            </a>
+            <!-- CARD 3 -->
+            <a href="/product-detail?id=1" class="product-card">
+              <div class="product-image">
+                <img src="/assets/images/pc1.jpg" alt="PC Gaming" />
+              </div>
+
+              <div class="product-info">
+                <h3>PC TTG GAMING i5 12400F - 16GB DDR4 - RTX 5060 8GB...</h3>
+
+                <div class="product-price">24.980.000 VNĐ</div>
+
+                <div class="old-price">25.990.000 VNĐ</div>
+
+                <div class="product-bottom">
+                  <button class="add-cart" onclick="event.preventDefault()">
+                    <span class="cart-icon"
+                      ><i
+                        class="fa-solid fa-cart-shopping"
+                        style="color: rgb(255, 255, 255)"
+                      ></i
+                    ></span>
+                    <span class="cart-text"> THÊM VÀO GIỎ </span>
+                  </button>
+
+                  <span class="stock"> Còn hàng </span>
+                </div>
+              </div>
+            </a>
+            <!-- CARD 4 -->
+            <a href="/product-detail?id=1" class="product-card">
+              <div class="product-image">
+                <img src="/assets/images/pc1.jpg" alt="PC Gaming" />
+              </div>
+
+              <div class="product-info">
+                <h3>PC HIGH PERFORMANCE GAMING RTX 3050 6GB -...</h3>
+
+                <div class="product-price">15.980.000 VNĐ</div>
+
+                <div class="old-price">17.990.000 VNĐ</div>
+
+                <div class="product-bottom">
+                  <button class="add-cart" onclick="event.preventDefault()">
+                    <span class="cart-icon"
+                      ><i
+                        class="fa-solid fa-cart-shopping"
+                        style="color: rgb(255, 255, 255)"
+                      ></i
+                    ></span>
+                    <span class="cart-text"> THÊM VÀO GIỎ </span>
+                  </button>
+
+                  <span class="stock"> Còn hàng </span>
+                </div>
+              </div>
+            </a>
+            <!-- CARD 5 -->
+            <a href="/product-detail?id=1" class="product-card">
+              <div class="product-image">
+                <img src="/assets/images/pc1.jpg" alt="PC Gaming" />
+              </div>
+
+              <div class="product-info">
+                <h3>PC TTG DESIGNER i5 12400F - RTX 3050 6GB OC...</h3>
+
+                <div class="product-price">15.980.000 VNĐ</div>
+
+                <div class="old-price">17.990.000 VNĐ</div>
+
+                <div class="product-bottom">
+                  <button class="add-cart" onclick="event.preventDefault()">
+                    <span class="cart-icon"
+                      ><i
+                        class="fa-solid fa-cart-shopping"
+                        style="color: rgb(255, 255, 255)"
+                      ></i
+                    ></span>
+                    <span class="cart-text"> THÊM VÀO GIỎ </span>
+                  </button>
+
+                  <span class="stock"> Còn hàng </span>
+                </div>
+              </div>
+            </a>
+            <!-- CARD 6 -->
+            <a href="/product-detail?id=1" class="product-card">
+              <div class="product-image">
+                <img src="/assets/images/pc1.jpg" alt="PC Gaming" />
+              </div>
+
+              <div class="product-info">
+                <h3>PC TTG DESIGNER i5 12400F - RTX 3050 6GB OC...</h3>
+
+                <div class="product-price">15.980.000 VNĐ</div>
+
+                <div class="old-price">17.990.000 VNĐ</div>
+
+                <div class="product-bottom">
+                  <button class="add-cart" onclick="event.preventDefault()">
+                    <span class="cart-icon"
+                      ><i
+                        class="fa-solid fa-cart-shopping"
+                        style="color: rgb(255, 255, 255)"
+                      ></i
+                    ></span>
+                    <span class="cart-text"> THÊM VÀO GIỎ </span>
+                  </button>
+
+                  <span class="stock"> Còn hàng </span>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <button class="category-arrow category-next">›</button>
+        </div>
+      </div>
+    </section>
+    <!-- SẢN PHẨM TƯƠNG TỰ -->
+    <section class="similar-products-section">
+      <div class="section-header">
+        <h2>Bạn có thể sẽ thích</h2>
+      </div>
+
+      <div class="similar-products-grid" id="similarProductsGrid">
+        <a href="/product-detail?id=1" class="product-card">
+          <div class="product-image">
+            <img src="/assets/images/pc1.jpg" alt="PC Gaming" />
+          </div>
+
+          <div class="product-info">
+            <h3>PC TTG DESIGNER i5 12400F - RTX 3050 6GB OC...</h3>
+
+            <div class="product-price">15.980.000 VNĐ</div>
+
+            <div class="old-price">17.990.000 VNĐ</div>
+
+            <div class="product-bottom">
+              <button class="add-cart" onclick="event.preventDefault()">
+                <span class="cart-icon"
+                  ><i
+                    class="fa-solid fa-cart-shopping"
+                    style="color: rgb(255, 255, 255)"
+                  ></i
+                ></span>
+                <span class="cart-text"> THÊM VÀO GIỎ </span>
+              </button>
+
+              <span class="stock"> Còn hàng </span>
+            </div>
+          </div>
+        </a>
+        <a href="/product-detail?id=1" class="product-card">
+          <div class="product-image">
+            <img src="/assets/images/pc1.jpg" alt="PC Gaming" />
+          </div>
+
+          <div class="product-info">
+            <h3>PC TTG DESIGNER i5 12400F - RTX 3050 6GB OC...</h3>
+
+            <div class="product-price">15.980.000 VNĐ</div>
+
+            <div class="old-price">17.990.000 VNĐ</div>
+
+            <div class="product-bottom">
+              <button class="add-cart" onclick="event.preventDefault()">
+                <span class="cart-icon"
+                  ><i
+                    class="fa-solid fa-cart-shopping"
+                    style="color: rgb(255, 255, 255)"
+                  ></i
+                ></span>
+                <span class="cart-text"> THÊM VÀO GIỎ </span>
+              </button>
+
+              <span class="stock"> Còn hàng </span>
+            </div>
+          </div>
+        </a>
+        <a href="/product-detail?id=1" class="product-card">
+          <div class="product-image">
+            <img src="/assets/images/pc1.jpg" alt="PC Gaming" />
+          </div>
+
+          <div class="product-info">
+            <h3>PC TTG DESIGNER i5 12400F - RTX 3050 6GB OC...</h3>
+
+            <div class="product-price">15.980.000 VNĐ</div>
+
+            <div class="old-price">17.990.000 VNĐ</div>
+
+            <div class="product-bottom">
+              <button class="add-cart" onclick="event.preventDefault()">
+                <span class="cart-icon"
+                  ><i
+                    class="fa-solid fa-cart-shopping"
+                    style="color: rgb(255, 255, 255)"
+                  ></i
+                ></span>
+                <span class="cart-text"> THÊM VÀO GIỎ </span>
+              </button>
+
+              <span class="stock"> Còn hàng </span>
+            </div>
+          </div>
+        </a>
+        <a href="/product-detail?id=1" class="product-card">
+          <div class="product-image">
+            <img src="/assets/images/pc1.jpg" alt="PC Gaming" />
+          </div>
+
+          <div class="product-info">
+            <h3>PC TTG DESIGNER i5 12400F - RTX 3050 6GB OC...</h3>
+
+            <div class="product-price">15.980.000 VNĐ</div>
+
+            <div class="old-price">17.990.000 VNĐ</div>
+
+            <div class="product-bottom">
+              <button class="add-cart" onclick="event.preventDefault()">
+                <span class="cart-icon"
+                  ><i
+                    class="fa-solid fa-cart-shopping"
+                    style="color: rgb(255, 255, 255)"
+                  ></i
+                ></span>
+                <span class="cart-text"> THÊM VÀO GIỎ </span>
+              </button>
+
+              <span class="stock"> Còn hàng </span>
+            </div>
+          </div>
+        </a>
+        <a href="/product-detail?id=1" class="product-card">
+          <div class="product-image">
+            <img src="/assets/images/pc1.jpg" alt="PC Gaming" />
+          </div>
+
+          <div class="product-info">
+            <h3>PC TTG DESIGNER i5 12400F - RTX 3050 6GB OC...</h3>
+
+            <div class="product-price">15.980.000 VNĐ</div>
+
+            <div class="old-price">17.990.000 VNĐ</div>
+
+            <div class="product-bottom">
+              <button class="add-cart" onclick="event.preventDefault()">
+                <span class="cart-icon"
+                  ><i
+                    class="fa-solid fa-cart-shopping"
+                    style="color: rgb(255, 255, 255)"
+                  ></i
+                ></span>
+                <span class="cart-text"> THÊM VÀO GIỎ </span>
+              </button>
+
+              <span class="stock"> Còn hàng </span>
+            </div>
+          </div>
+        </a>
+
+        <a href="/product-detail?id=1" class="product-card">
+          <div class="product-image">
+            <img src="/assets/images/pc1.jpg" alt="PC Gaming" />
+          </div>
+
+          <div class="product-info">
+            <h3>PC TTG DESIGNER i5 12400F - RTX 3050 6GB OC...</h3>
+
+            <div class="product-price">15.980.000 VNĐ</div>
+
+            <div class="old-price">17.990.000 VNĐ</div>
+
+            <div class="product-bottom">
+              <button class="add-cart" onclick="event.preventDefault()">
+                <span class="cart-icon"
+                  ><i
+                    class="fa-solid fa-cart-shopping"
+                    style="color: rgb(255, 255, 255)"
+                  ></i
+                ></span>
+                <span class="cart-text"> THÊM VÀO GIỎ </span>
+              </button>
+
+              <span class="stock"> Còn hàng </span>
+            </div>
+          </div>
+        </a>
+        <a href="/product-detail?id=1" class="product-card">
+          <div class="product-image">
+            <img src="/assets/images/pc1.jpg" alt="PC Gaming" />
+          </div>
+
+          <div class="product-info">
+            <h3>PC TTG DESIGNER i5 12400F - RTX 3050 6GB OC...</h3>
+
+            <div class="product-price">15.980.000 VNĐ</div>
+
+            <div class="old-price">17.990.000 VNĐ</div>
+
+            <div class="product-bottom">
+              <button class="add-cart" onclick="event.preventDefault()">
+                <span class="cart-icon"
+                  ><i
+                    class="fa-solid fa-cart-shopping"
+                    style="color: rgb(255, 255, 255)"
+                  ></i
+                ></span>
+                <span class="cart-text"> THÊM VÀO GIỎ </span>
+              </button>
+
+              <span class="stock"> Còn hàng </span>
+            </div>
+          </div>
+        </a>
+        <a href="/product-detail?id=1" class="product-card">
+          <div class="product-image">
+            <img src="/assets/images/pc1.jpg" alt="PC Gaming" />
+          </div>
+
+          <div class="product-info">
+            <h3>PC TTG DESIGNER i5 12400F - RTX 3050 6GB OC...</h3>
+
+            <div class="product-price">15.980.000 VNĐ</div>
+
+            <div class="old-price">17.990.000 VNĐ</div>
+
+            <div class="product-bottom">
+              <button class="add-cart" onclick="event.preventDefault()">
+                <span class="cart-icon"
+                  ><i
+                    class="fa-solid fa-cart-shopping"
+                    style="color: rgb(255, 255, 255)"
+                  ></i
+                ></span>
+                <span class="cart-text"> THÊM VÀO GIỎ </span>
+              </button>
+
+              <span class="stock"> Còn hàng </span>
+            </div>
+          </div>
+        </a>
+        <a href="/product-detail?id=1" class="product-card">
+          <div class="product-image">
+            <img src="/assets/images/pc1.jpg" alt="PC Gaming" />
+          </div>
+
+          <div class="product-info">
+            <h3>PC TTG DESIGNER i5 12400F - RTX 3050 6GB OC...</h3>
+
+            <div class="product-price">15.980.000 VNĐ</div>
+
+            <div class="old-price">17.990.000 VNĐ</div>
+
+            <div class="product-bottom">
+              <button class="add-cart" onclick="event.preventDefault()">
+                <span class="cart-icon"
+                  ><i
+                    class="fa-solid fa-cart-shopping"
+                    style="color: rgb(255, 255, 255)"
+                  ></i
+                ></span>
+                <span class="cart-text"> THÊM VÀO GIỎ </span>
+              </button>
+
+              <span class="stock"> Còn hàng </span>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- XEM THÊM -->
+      <div class="load-more-wrapper">
+        <button
+          type="button"
+          class="load-more-btn"
+          id="loadMoreSimilarProducts"
+        >
+          Xem thêm
+        </button>
+      </div>
+    </section>
+    <div class="modal-overlay" id="productModal" hidden>
+      <div class="product-modal">
+        <!-- HEADER -->
+
+        <div class="modal-header">
+          <h2 id="pickerModalTitle">Sản phẩm mua kèm được đề xuất</h2>
+
+          <button type="button" class="close-modal" id="closeModal">×</button>
+        </div>
+
+        <!-- SEARCH -->
+
+        <div class="modal-search">
+          <span> 🔍 </span>
+
+          <input
+            type="text"
+            id="productSearch"
+            placeholder="Bạn cần tìm sản phẩm gì?"
+          />
+        </div>
+
+        <!-- FILTER -->
+
+        <div class="filter-row">
+          <button type="button" class="filter-btn active" data-filter="all">
+            ⚑ Bộ lọc
+          </button>
+
+          <button type="button" class="filter-btn" data-filter="price">
+            Giá
+
+            <span class="filter-count"></span>
+          </button>
+
+          <button type="button" class="filter-btn" data-filter="brand">
+            Thương hiệu
+
+            <span class="filter-count"></span>
+          </button>
+
+          <button type="button" class="filter-btn" data-filter="keycap">
+            Keycap
+
+            <span class="filter-count"></span>
+          </button>
+
+          <button type="button" class="filter-btn" data-filter="led">
+            Loại Đèn LED
+
+            <span class="filter-count"></span>
+          </button>
+
+          <button type="button" class="filter-btn" data-filter="switch">
+            Loại Switch
+
+            <span class="filter-count"></span>
+          </button>
+
+          <button type="button" class="filter-btn" data-filter="connection">
+            Chuẩn kết nối
+
+            <span class="filter-count"></span>
+          </button>
+
+          <button type="button" class="filter-btn" data-filter="color">
+            Màu sắc
+
+            <span class="filter-count"></span>
+          </button>
+        </div>
+
+        <!-- SORT -->
+
+        <div class="sort-row">
+          <strong> Sắp xếp theo: </strong>
+
+          <button type="button" class="sort-option active" data-sort="newest">
+            Mới nhất
+          </button>
+
+          <button type="button" class="sort-option" data-sort="asc">
+            Tăng dần
+          </button>
+
+          <button type="button" class="sort-option" data-sort="desc">
+            Giảm dần
+          </button>
+        </div>
+
+        <!-- =================================================
+                 MODAL PRODUCTS
+                 
+                 QUAN TRỌNG:
+                 TẤT CẢ CARD ĐƯỢC VIẾT SẴN TRONG HTML.
+            ================================================== -->
+
+        <div class="modal-products" id="modalProducts">
+          <!-- Sản phẩm mua kèm được render động theo danh mục và bộ lọc -->
+        </div>
+      </div>
+    </div>
+
+    <div class="filter-overlay" id="filterOverlay">
+      <div class="filter-popup">
+        <!-- HEADER -->
+
+        <div class="filter-popup-header">
+          <h3 id="filterPopupTitle">Loại Đèn LED</h3>
+
+          <button type="button" class="filter-close" id="filterClose">×</button>
+        </div>
+
+        <!-- BODY -->
+
+        <div class="filter-popup-body">
+          <div class="select-all-container">
+            <button type="button" id="selectAllBtn">Chọn tất cả</button>
+          </div>
+
+          <div class="filter-options" id="filterOptions">
+            <!--
+                    JavaScript sẽ tự
+                    tạo checkbox ở đây
+                -->
+          </div>
+        </div>
+
+        <!-- FOOTER -->
+
+        <div class="filter-popup-footer">
+          <button type="button" class="btn-clear" id="clearFilter">
+            Xóa tất cả
+          </button>
+
+          <button type="button" class="btn-apply" id="applyFilter">
+            Áp dụng
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="footer"></div>
+    <script src="/js/pages/components/config.js"></script>
+    <script src="/js/components/component.js"></script>
+    <script src="/js/components/header.js"></script>
+    <script src="/js/components/footer.js"></script>
+    <script src="/js/pages/productDetail.js"></script>
+  </body>
+</html>

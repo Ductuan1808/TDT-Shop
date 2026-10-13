@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/css/components/header.css" />
+    <link rel="stylesheet" href="/css/components/product-card.css" />
+    <link rel="stylesheet" href="/css/productList.css" />
+    <link rel="stylesheet" href="/css/components/footer.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <title>Danh Sách Sản Phẩm - TTGShop</title>
+  </head>
+  <body>
+    <div id="header"></div>
+    <div class="product-page">
+      <!-- SIDEBAR FILTER -->
+      <aside class="filter-sidebar">
+        <div class="filter-title">LỌC SẢN PHẨM</div>
+        <div class="filter-group">
+          <h3>KHOẢNG GIÁ</h3>
+          <label><input type="checkbox" /> 10 triệu - 15 triệu (11)</label>
+          <label><input type="checkbox" /> 15 triệu - 20 triệu (36)</label>
+          <label><input type="checkbox" /> 20 triệu - 25 triệu (51)</label>
+          <label><input type="checkbox" /> 25 triệu - 35 triệu (74)</label>
+          <label><input type="checkbox" /> 35 triệu - 45 triệu (92)</label>
+          <label><input type="checkbox" /> 45 triệu - 60 triệu (58)</label>
+          <label><input type="checkbox" /> 60 triệu - 80 triệu (43)</label>
+          <label><input type="checkbox" /> 80 triệu - 100 triệu (9)</label>
+          <label><input type="checkbox" /> 100 triệu - 150 triệu (2)</label>
+          <label><input type="checkbox" /> 150 triệu - 200 triệu (11)</label>
+        </div>
+
+        <div class="filter-group">
+          <h3>THƯƠNG HIỆU</h3>
+
+          <label><input type="checkbox" /> ASUS (1)</label>
+          <label><input type="checkbox" /> Khác (263)</label>
+        </div>
+
+        <div class="filter-group">
+          <h3>LỌC SẢN PHẨM</h3>
+        </div>
+
+        <div class="filter-group">
+          <h3>Dòng CPU</h3>
+
+          <label><input type="checkbox" /> AMD Ryzen 7 (77)</label>
+          <label><input type="checkbox" /> AMD Ryzen 9 (27)</label>
+          <label><input type="checkbox" /> Intel Core i3 (2)</label>
+          <label><input type="checkbox" /> Intel Core i5 (142)</label>
+          <label><input type="checkbox" /> Intel Core i7 (60)</label>
+          <label><input type="checkbox" /> Intel Core i9 (7)</label>
+          <label><input type="checkbox" /> Intel Core Ultra 5 (17)</label>
+          <label><input type="checkbox" /> Intel Core Ultra 7 (32)</label>
+          <label><input type="checkbox" /> Intel Core Ultra 9 (7)</label>
+          <label><input type="checkbox" /> Intel Core 5 (1)</label>
+          <label><input type="checkbox" /> AMD Ryzen 5 (41)</label>
+        </div>
+
+        <div class="filter-group">
+          <h3>Dung lượng RAM</h3>
+
+          <label><input type="checkbox" /> 8GB (15)</label>
+          <label><input type="checkbox" /> 16GB (292)</label>
+          <label><input type="checkbox" /> 32GB (2x16GB) (103)</label>
+          <label><input type="checkbox" /> 64GB (4)</label>
+        </div>
+
+        <div class="filter-group">
+          <h3>GPU</h3>
+
+          <label><input type="checkbox" /> AMD RX 9070 XT 16GB (21)</label>
+          <label><input type="checkbox" /> AMD RX 9060 XT 16GB (14)</label>
+          <label><input type="checkbox" /> NVIDIA RTX 5060 Ti 16GB (46)</label>
+          <label><input type="checkbox" /> AMD RX 7600 8GB (19)</label>
+          <label><input type="checkbox" /> NVIDIA RTX 5090 32GB (13)</label>
+          <label><input type="checkbox" /> NVIDIA RTX 5080 16GB (19)</label>
+          <label><input type="checkbox" /> NVIDIA RTX 5070 Ti 16GB (35)</label>
+          <label><input type="checkbox" /> NVIDIA RTX 5070 12GB (63)</label>
+          <label><input type="checkbox" /> NVIDIA RTX 5060 Ti 8GB (35)</label>
+          <label><input type="checkbox" /> NVIDIA GTX 1660 Super (4)</label>
+          <label><input type="checkbox" /> NVIDIA RTX 3050 6GB (27)</label>
+          <label><input type="checkbox" /> NVIDIA RTX 3050 8GB (19)</label>
+          <label><input type="checkbox" /> NVIDIA RTX 3060 12GB (27)</label>
+          <label><input type="checkbox" /> NVIDIA RTX 4060 8GB (24)</label>
+          <label><input type="checkbox" /> NVIDIA RTX 5060 8GB (46)</label>
+        </div>
+       
+      </aside>
+
+      <!-- PRODUCT AREA -->
+      <main class="product-content">
+        <div class="product-toolbar">
+          <div class="product-count">
+            Tìm thấy <strong>419</strong> sản phẩm
+          </div>
+
+          <select class="sort-select">
+            <option>Sắp xếp theo</option>
+            <option>Mới nhất</option>
+            <option>Giá tăng dần</option>
+            <option>Giá giảm dần</option>
+            <option>Bán chạy</option>
+          </select>
+        </div>
+
+        <!-- CARD CỦA M -->
+        <div class="product-grid">
+          <!-- PASTE CARD PRODUCT CỦA M VÀO ĐÂY -->
+          
+          <a href="/product-detail?id=1" class="product-card">
+            <div class="product-image">
+              <img src="/assets/images/pc1.jpg" alt="PC Gaming" />
+            </div>
+
+            <div class="product-info">
+              <h3>PC TTG GAMING i5 12400F - RX 7600 8GB OC DUAL...</h3>
+
+              <div class="product-price">18.680.000 VNĐ</div>
+
+              <div class="old-price">20.990.000 VNĐ</div>
+
+              <div class="product-bottom">
+                <button class="add-cart" onclick="event.preventDefault()">
+                  <span class="cart-icon"
+                    ><i
+                      class="fa-solid fa-cart-shopping"
+                      style="color: rgb(255, 255, 255)"
+                    ></i
+                  ></span>
+                  <span class="cart-text"> THÊM VÀO GIỎ </span>
+                </button>
+
+                <span class="stock"> Còn hàng </span>
+              </div>
+            </div>
+          </a> 
+            <a href="/product-detail?id=1" class="product-card">
+            <div class="product-image">
+              <img src="/assets/images/pc1.jpg" alt="PC Gaming" />
+            </div>
+
+            <div class="product-info">
+              <h3>PC TTG GAMING i5 12400F - RX 7600 8GB OC DUAL...</h3>
+
+              <div class="product-price">18.680.000 VNĐ</div>
+
+              <div class="old-price">20.990.000 VNĐ</div>
+
+              <div class="product-bottom">
+                <button class="add-cart" onclick="event.preventDefault()">
+                  <span class="cart-icon"
+                    ><i
+                      class="fa-solid fa-cart-shopping"
+                      style="color: rgb(255, 255, 255)"
+                    ></i
+                  ></span>
+                  <span class="cart-text"> THÊM VÀO GIỎ </span>
+                </button>
+
+                <span class="stock"> Còn hàng </span>
+              </div>
+            </div>
+          </a> 
+            <a href="/product-detail?id=1" class="product-card">
+            <div class="product-image">
+              <img src="/assets/images/pc1.jpg" alt="PC Gaming" />
+            </div>
+
+            <div class="product-info">
+              <h3>PC TTG GAMING i5 12400F - RX 7600 8GB OC DUAL...</h3>
+
+              <div class="product-price">18.680.000 VNĐ</div>
+
+              <div class="old-price">20.990.000 VNĐ</div>
+
+              <div class="product-bottom">
+                <button class="add-cart" onclick="event.preventDefault()">
+                  <span class="cart-icon"
+                    ><i
+                      class="fa-solid fa-cart-shopping"
+                      style="color: rgb(255, 255, 255)"
+                    ></i
+                  ></span>
+                  <span class="cart-text"> THÊM VÀO GIỎ </span>
+                </button>
+
+                <span class="stock"> Còn hàng </span>
+              </div>
+            </div>
+          </a> 
+            <a href="/product-detail?id=1" class="product-card">
+            <div class="product-image">
+              <img src="/assets/images/pc1.jpg" alt="PC Gaming" />
+            </div>
+
+            <div class="product-info">
+              <h3>PC TTG GAMING i5 12400F - RX 7600 8GB OC DUAL...</h3>
+
+              <div class="product-price">18.680.000 VNĐ</div>
+
+              <div class="old-price">20.990.000 VNĐ</div>
+
+              <div class="product-bottom">
+                <button class="add-cart" onclick="event.preventDefault()">
+                  <span class="cart-icon"
+                    ><i
+                      class="fa-solid fa-cart-shopping"
+                      style="color: rgb(255, 255, 255)"
+                    ></i
+                  ></span>
+                  <span class="cart-text"> THÊM VÀO GIỎ </span>
+                </button>
+
+                <span class="stock"> Còn hàng </span>
+              </div>
+            </div>
+          </a> 
+            <a href="/product-detail?id=1" class="product-card">
+            <div class="product-image">
+              <img src="/assets/images/pc1.jpg" alt="PC Gaming" />
+            </div>
+
+            <div class="product-info">
+              <h3>PC TTG GAMING i5 12400F - RX 7600 8GB OC DUAL...</h3>
+
+              <div class="product-price">18.680.000 VNĐ</div>
+
+              <div class="old-price">20.990.000 VNĐ</div>
+
+              <div class="product-bottom">
+                <button class="add-cart" onclick="event.preventDefault()">
+                  <span class="cart-icon"
+                    ><i
+                      class="fa-solid fa-cart-shopping"
+                      style="color: rgb(255, 255, 255)"
+                    ></i
+                  ></span>
+                  <span class="cart-text"> THÊM VÀO GIỎ </span>
+                </button>
+
+                <span class="stock"> Còn hàng </span>
+              </div>
+            </div>
+          </a> 
+            <a href="/product-detail?id=1" class="product-card">
+            <div class="product-image">
+              <img src="/assets/images/pc1.jpg" alt="PC Gaming" />
+            </div>
+
+            <div class="product-info">
+              <h3>PC TTG GAMING i5 12400F - RX 7600 8GB OC DUAL...</h3>
+
+              <div class="product-price">18.680.000 VNĐ</div>
+
+              <div class="old-price">20.990.000 VNĐ</div>
+
+              <div class="product-bottom">
+                <button class="add-cart" onclick="event.preventDefault()">
+                  <span class="cart-icon"
+                    ><i
+                      class="fa-solid fa-cart-shopping"
+                      style="color: rgb(255, 255, 255)"
+                    ></i
+                  ></span>
+                  <span class="cart-text"> THÊM VÀO GIỎ </span>
+                </button>
+
+                <span class="stock"> Còn hàng </span>
+              </div>
+            </div>
+          </a> 
+            <a href="/product-detail?id=1" class="product-card">
+            <div class="product-image">
+              <img src="/assets/images/pc1.jpg" alt="PC Gaming" />
+            </div>
+
+            <div class="product-info">
+              <h3>PC TTG GAMING i5 12400F - RX 7600 8GB OC DUAL...</h3>
+
+              <div class="product-price">18.680.000 VNĐ</div>
+
+              <div class="old-price">20.990.000 VNĐ</div>
+
+              <div class="product-bottom">
+                <button class="add-cart" onclick="event.preventDefault()">
+                  <span class="cart-icon"
+                    ><i
+                      class="fa-solid fa-cart-shopping"
+                      style="color: rgb(255, 255, 255)"
+                    ></i
+                  ></span>
+                  <span class="cart-text"> THÊM VÀO GIỎ </span>
+                </button>
+
+                <span class="stock"> Còn hàng </span>
+              </div>
+            </div>
+          </a> 
+            <a href="/product-detail?id=1" class="product-card">
+            <div class="product-image">
+              <img src="/assets/images/pc1.jpg" alt="PC Gaming" />
+            </div>
+
+            <div class="product-info">
+              <h3>PC TTG GAMING i5 12400F - RX 7600 8GB OC DUAL...</h3>
+
+              <div class="product-price">18.680.000 VNĐ</div>
+
+              <div class="old-price">20.990.000 VNĐ</div>
+
+              <div class="product-bottom">
+                <button class="add-cart" onclick="event.preventDefault()">
+                  <span class="cart-icon"
+                    ><i
+                      class="fa-solid fa-cart-shopping"
+                      style="color: rgb(255, 255, 255)"
+                    ></i
+                  ></span>
+                  <span class="cart-text"> THÊM VÀO GIỎ </span>
+                </button>
+
+                <span class="stock"> Còn hàng </span>
+              </div>
+            </div>
+          </a>  <a href="/product-detail?id=1" class="product-card">
+            <div class="product-image">
+              <img src="/assets/images/pc1.jpg" alt="PC Gaming" />
+            </div>
+
+            <div class="product-info">
+              <h3>PC TTG GAMING i5 12400F - RX 7600 8GB OC DUAL...</h3>
+
+              <div class="product-price">18.680.000 VNĐ</div>
+
+              <div class="old-price">20.990.000 VNĐ</div>
+
+              <div class="product-bottom">
+                <button class="add-cart" onclick="event.preventDefault()">
+                  <span class="cart-icon"
+                    ><i
+                      class="fa-solid fa-cart-shopping"
+                      style="color: rgb(255, 255, 255)"
+                    ></i
+                  ></span>
+                  <span class="cart-text"> THÊM VÀO GIỎ </span>
+                </button>
+
+                <span class="stock"> Còn hàng </span>
+              </div>
+            </div>
+          </a> 
+            <a href="/product-detail?id=1" class="product-card">
+            <div class="product-image">
+              <img src="/assets/images/pc1.jpg" alt="PC Gaming" />
+            </div>
+
+            <div class="product-info">
+              <h3>PC TTG GAMING i5 12400F - RX 7600 8GB OC DUAL...</h3>
+
+              <div class="product-price">18.680.000 VNĐ</div>
+
+              <div class="old-price">20.990.000 VNĐ</div>
+
+              <div class="product-bottom">
+                <button class="add-cart" onclick="event.preventDefault()">
+                  <span class="cart-icon"
+                    ><i
+                      class="fa-solid fa-cart-shopping"
+                      style="color: rgb(255, 255, 255)"
+                    ></i
+                  ></span>
+                  <span class="cart-text"> THÊM VÀO GIỎ </span>
+                </button>
+
+                <span class="stock"> Còn hàng </span>
+              </div>
+            </div>
+          </a> 
+            <a href="/product-detail?id=1" class="product-card">
+            <div class="product-image">
+              <img src="/assets/images/pc1.jpg" alt="PC Gaming" />
+            </div>
+
+            <div class="product-info">
+              <h3>PC TTG GAMING i5 12400F - RX 7600 8GB OC DUAL...</h3>
+
+              <div class="product-price">18.680.000 VNĐ</div>
+
+              <div class="old-price">20.990.000 VNĐ</div>
+
+              <div class="product-bottom">
+                <button class="add-cart" onclick="event.preventDefault()">
+                  <span class="cart-icon"
+                    ><i
+                      class="fa-solid fa-cart-shopping"
+                      style="color: rgb(255, 255, 255)"
+                    ></i
+                  ></span>
+                  <span class="cart-text"> THÊM VÀO GIỎ </span>
+                </button>
+
+                <span class="stock"> Còn hàng </span>
+              </div>
+            </div>
+          </a> 
+            <a href="/product-detail?id=1" class="product-card">
+            <div class="product-image">
+              <img src="/assets/images/pc1.jpg" alt="PC Gaming" />
+            </div>
+
+            <div class="product-info">
+              <h3>PC TTG GAMING i5 12400F - RX 7600 8GB OC DUAL...</h3>
+
+              <div class="product-price">18.680.000 VNĐ</div>
+
+              <div class="old-price">20.990.000 VNĐ</div>
+
+              <div class="product-bottom">
+                <button class="add-cart" onclick="event.preventDefault()">
+                  <span class="cart-icon"
+                    ><i
+                      class="fa-solid fa-cart-shopping"
+                      style="color: rgb(255, 255, 255)"
+                    ></i
+                  ></span>
+                  <span class="cart-text"> THÊM VÀO GIỎ </span>
+                </button>
+
+                <span class="stock"> Còn hàng </span>
+              </div>
+            </div>
+          </a> 
+          
+        </div>
+
+        <!-- PAGINATION -->
+        <div class="pagination-wrapper">
+          <div class="pagination" id="pagination">
+            <button type="button" class="page-btn page-prev disabled" data-page="1" disabled title="Trang trước">
+              <i class="fa-solid fa-chevron-left"></i>
+              <span>Trước</span>
+            </button>
+            <button type="button" class="page-btn active" data-page="1">1</button>
+            <button type="button" class="page-btn" data-page="2">2</button>
+            <button type="button" class="page-btn" data-page="3">3</button>
+            <button type="button" class="page-btn" data-page="4">4</button>
+            <button type="button" class="page-btn" data-page="5">5</button>
+            <span class="page-dots">...</span>
+            <button type="button" class="page-btn" data-page="27">27</button>
+            <button type="button" class="page-btn page-next" data-page="2" title="Trang sau">
+              <span>Sau</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <div id="footer"></div>
+    <script src="/js/pages/components/config.js"></script>
+    <script src="/js/pages/productList.js"></script>
+    <script src="/js/components/component.js"></script>
+    <script src="/js/components/header.js"></script>
+    <script src="/js/components/footer.js"></script>
+  </body>
+</html>

@@ -1,0 +1,189 @@
+<!-- =========================================================================
+     tong-quan.html - Giao diện Tổng quan Dashboard Quản trị TDT Shop
+     Bao gồm: Thẻ thống kê KPI, biểu đồ doanh thu & trạng thái, bảng Top sản phẩm
+     ========================================================================= -->
+
+<div class="dashboard-wrapper">
+  <!-- 1. HÀNG THẺ THỐNG KÊ (KPI STATS CARDS) -->
+  <div class="kpi-grid">
+    <!-- Doanh thu bán hàng -->
+    <div class="kpi-card revenue-card">
+      <div class="kpi-icon-box">
+        <i class="fa-solid fa-coins"></i>
+      </div>
+      <div class="kpi-info">
+        <span class="kpi-title">Doanh thu bán hàng</span>
+        <h3 class="kpi-value" id="kpi-revenue">0 ₫</h3>
+        <span class="kpi-subtext"><i class="fa-solid fa-circle-check text-success"></i> Từ các đơn đã giao thành công</span>
+      </div>
+    </div>
+
+    <!-- Tổng số đơn hàng -->
+    <div class="kpi-card orders-card">
+      <div class="kpi-icon-box">
+        <i class="fa-solid fa-cart-shopping"></i>
+      </div>
+      <div class="kpi-info">
+        <span class="kpi-title">Tổng số đơn hàng</span>
+        <h3 class="kpi-value" id="kpi-orders">0</h3>
+        <span class="kpi-subtext" id="kpi-orders-sub">Toàn bộ đơn trên hệ thống</span>
+      </div>
+    </div>
+
+    <!-- Tổng số khách hàng -->
+    <div class="kpi-card customers-card">
+      <div class="kpi-icon-box">
+        <i class="fa-solid fa-users"></i>
+      </div>
+      <div class="kpi-info">
+        <span class="kpi-title">Tổng số khách hàng</span>
+        <h3 class="kpi-value" id="kpi-customers">0</h3>
+        <span class="kpi-subtext">Tài khoản thành viên (trừ Admin)</span>
+      </div>
+    </div>
+
+    <!-- Tổng số sản phẩm -->
+    <div class="kpi-card products-card">
+      <div class="kpi-icon-box">
+        <i class="fa-solid fa-boxes-stacked"></i>
+      </div>
+      <div class="kpi-info">
+        <span class="kpi-title">Tổng số sản phẩm</span>
+        <h3 class="kpi-value" id="kpi-products">0</h3>
+        <span class="kpi-subtext">PC, Linh kiện & Phụ kiện</span>
+      </div>
+    </div>
+
+    <!-- Đơn chờ xác nhận -->
+    <div class="kpi-card pending-card">
+      <div class="kpi-icon-box">
+        <i class="fa-solid fa-clock-rotate-left"></i>
+      </div>
+      <div class="kpi-info">
+        <span class="kpi-title">Đơn chờ xác nhận</span>
+        <h3 class="kpi-value text-warning" id="kpi-pending-orders">0</h3>
+        <span class="kpi-subtext">Cần xử lý phê duyệt ngay</span>
+      </div>
+    </div>
+
+    <!-- Sản phẩm sắp hết hàng -->
+    <div class="kpi-card lowstock-card">
+      <div class="kpi-icon-box">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+      </div>
+      <div class="kpi-info">
+        <span class="kpi-title">Sắp hết hàng (Tồn &le; 5)</span>
+        <h3 class="kpi-value text-danger" id="kpi-low-stock">0</h3>
+        <span class="kpi-subtext">Cần nhập thêm tồn kho</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. HÀNG BIỂU ĐỒ (CHARTS) -->
+  <div class="charts-row">
+    <!-- Biểu đồ doanh thu -->
+    <div class="admin-card chart-card revenue-chart-card">
+      <div class="card-header">
+        <div class="card-title">
+          <i class="fa-solid fa-chart-line"></i>
+          Biểu đồ doanh thu bán hàng
+        </div>
+        <div class="chart-filter-tabs">
+          <button class="chart-tab-btn active" id="btn-chart-7days" onclick="window.TongQuanComponent.switchRevenueChart('7days')">7 ngày gần nhất</button>
+          <button class="chart-tab-btn" id="btn-chart-month" onclick="window.TongQuanComponent.switchRevenueChart('month')">Tháng hiện tại</button>
+          <button class="chart-tab-btn" id="btn-chart-custom" onclick="window.TongQuanComponent.switchRevenueChart('custom')"><i class="fa-regular fa-calendar-days"></i> Tùy chọn ngày</button>
+        </div>
+      </div>
+
+      <!-- Khối chọn khoảng ngày tùy chỉnh -->
+      <div class="custom-date-range-bar" id="tq-custom-date-bar" style="display: none; margin-bottom: 16px;">
+        <div class="date-input-group">
+          <label><i class="fa-regular fa-calendar"></i> Từ ngày:</label>
+          <input type="date" id="tq-date-from" value="2025-02-01">
+        </div>
+        <div class="date-input-group">
+          <label><i class="fa-regular fa-calendar"></i> Đến ngày:</label>
+          <input type="date" id="tq-date-to" value="2025-03-31">
+        </div>
+        <button class="btn btn-primary btn-sm" id="btn-tq-apply-custom" onclick="window.TongQuanComponent.applyCustomDateRange()">
+          <i class="fa-solid fa-filter"></i> Lọc dữ liệu
+        </button>
+        <span class="custom-date-hint" id="tq-custom-date-hint"></span>
+      </div>
+
+      <div class="chart-canvas-wrap">
+        <canvas id="revenueChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Biểu đồ phân bổ trạng thái đơn hàng -->
+    <div class="admin-card chart-card status-chart-card">
+      <div class="card-header">
+        <div class="card-title">
+          <i class="fa-solid fa-chart-pie"></i>
+          Trạng thái đơn hàng
+        </div>
+      </div>
+      <div class="chart-canvas-wrap doughnut-wrap">
+        <canvas id="orderStatusChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. HÀNG BẢNG TOP BÁN CHẠY VÀ SẮP HẾT HÀNG -->
+  <div class="dashboard-tables-row">
+    <!-- Top 5 sản phẩm bán chạy -->
+    <div class="admin-card table-card">
+      <div class="card-header">
+        <div class="card-title">
+          <i class="fa-solid fa-fire text-danger"></i>
+          Top 5 sản phẩm bán chạy nhất
+        </div>
+        <a href="#san-pham" class="btn btn-outline btn-sm">Xem tất cả</a>
+      </div>
+      <div class="table-responsive">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Sản phẩm</th>
+              <th>SKU</th>
+              <th>Giá bán</th>
+              <th>Đã bán</th>
+              <th>Doanh số</th>
+            </tr>
+          </thead>
+          <tbody id="top-selling-table-body">
+            <!-- Render từ tong-quan.js -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Danh sách sản phẩm sắp hết hàng -->
+    <div class="admin-card table-card">
+      <div class="card-header">
+        <div class="card-title">
+          <i class="fa-solid fa-boxes-packing text-warning"></i>
+          Cảnh báo sản phẩm sắp hết hàng
+        </div>
+        <a href="#san-pham" class="btn btn-outline btn-sm">Quản lý kho</a>
+      </div>
+      <div class="table-responsive">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Sản phẩm</th>
+              <th>Loại</th>
+              <th>Tồn kho</th>
+              <th>Trạng thái</th>
+              <th>Hành động</th>
+            </tr>
+          </thead>
+          <tbody id="low-stock-table-body">
+            <!-- Render từ tong-quan.js -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

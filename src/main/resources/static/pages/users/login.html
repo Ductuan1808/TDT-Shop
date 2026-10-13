@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Đăng nhập | TDT Shop</title>
+
+    <link rel="stylesheet" href="/css/auth.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <div class="auth-page">
+      <!-- ================= LEFT ================= -->
+      <div class="auth-showcase">
+        <div class="showcase-overlay"></div>
+
+        <div class="showcase-content">
+          <div class="brand">
+            <div class="brand-mark">TDT</div>
+
+            <div>
+              <strong>TDT SHOP</strong>
+              <span>PC • LAPTOP • COMPONENTS</span>
+            </div>
+          </div>
+
+          <div class="showcase-text">
+            <span class="eyebrow"> PREMIUM PC STORE </span>
+
+            <h1>
+              Build your
+              <span>perfect PC.</span>
+            </h1>
+
+            <p>
+              Khám phá thế giới PC hiệu năng cao, linh kiện chính hãng và những
+              cấu hình được thiết kế dành riêng cho bạn.
+            </p>
+
+            <div class="showcase-line"></div>
+
+            <div class="showcase-features">
+              <div>
+                <strong>01</strong>
+                <span>PC Gaming</span>
+              </div>
+
+              <div>
+                <strong>02</strong>
+                <span>PC Workstation</span>
+              </div>
+
+              <div>
+                <strong>03</strong>
+                <span>Build Your PC</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="showcase-footer">
+            <span> © 2026 TDT SHOP </span>
+
+            <span> PERFORMANCE WITHOUT LIMITS </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= RIGHT ================= -->
+
+      <div class="auth-form-side">
+        <div class="auth-form-container">
+          <!-- Mobile brand -->
+
+          <div class="mobile-brand">TDT SHOP</div>
+
+          <div class="form-heading">
+            <span class="small-heading"> WELCOME BACK </span>
+
+            <h2>Đăng nhập</h2>
+
+            <p>Đăng nhập để tiếp tục trải nghiệm TTG Shop.</p>
+          </div>
+
+          <!-- ================= FORM ================= -->
+
+          <form id="loginForm">
+            <!-- USERNAME / EMAIL -->
+
+            <div class="input-group">
+              <label for="loginUsername"> Tên đăng nhập hoặc Email </label>
+
+              <div class="input-wrapper">
+                <span class="input-icon"> A     </span>
+
+                <input
+                  type="text"
+                  id="loginUsername"
+                  name="username"
+                  placeholder="Nhập username hoặc email"
+                  autocomplete="username"
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- PASSWORD -->
+
+            <div class="input-group">
+              <div class="label-row">
+                <label for="loginPassword"> Mật khẩu </label>
+
+                <a href="#"> Quên mật khẩu? </a>
+              </div>
+
+              <div class="input-wrapper">
+                <span class="input-icon"> • </span>
+                <input
+                  type="password"
+                  id="loginPassword"
+                  name="password"
+                  placeholder="Nhập mật khẩu"
+                  autocomplete="current-password"
+                  required
+                />
+                <button
+                  type="button"
+                  class="password-toggle"
+                  onclick="togglePassword('loginPassword', this)"
+                >
+                  Hiện
+                </button>
+              </div>
+            </div>
+
+            <!-- REMEMBER -->
+            <div class="remember-row">
+              <label class="checkbox-label">
+                <input type="checkbox" id="remember" />
+                <span> Ghi nhớ đăng nhập </span>
+              </label>
+            </div>
+            <!-- LOGIN -->
+            <button type="submit" class="main-button">
+              ĐĂNG NHẬP
+              <span>→</span>
+            </button>
+
+            <!-- DIVIDER -->
+
+            <div class="divider">
+              <span></span>
+
+              <p>HOẶC</p>
+
+              <span></span>
+            </div>
+
+            <!-- REGISTER -->
+
+            <div class="register-box">
+              <span> Chưa có tài khoản? </span>
+
+              <a href="/register"> Tạo tài khoản </a>
+            </div>
+          </form>
+
+          <div class="form-bottom">
+            <span> TDT SHOP </span>
+
+            <span> PC & COMPONENTS </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/pages/auth.js"></script>
+  </body>
+</html>

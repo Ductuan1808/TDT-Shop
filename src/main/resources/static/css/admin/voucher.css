@@ -1,0 +1,93 @@
+/* =========================================================================
+   voucher.css - Định kiểu Quản lý Voucher Admin TDT Shop
+   ========================================================================= */
+
+.vouchers-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.voucher-code-badge {
+  font-family: monospace;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  background-color: var(--primary-light, #e0f2fe);
+  color: var(--primary-dark, #0369a1);
+  padding: 4px 8px;
+  border-radius: var(--radius-sm, 4px);
+  border: 1px dashed var(--primary, #0284c7);
+}
+
+/* =========================================================================
+   Các nút thao tác trên bảng: Sửa, Ẩn/Hiện (Thống nhất toàn hệ thống Admin)
+   ========================================================================= */
+.action-btns-wrap {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 8px !important;
+  white-space: nowrap !important;
+}
+
+.btn-action {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s ease;
+  background-color: #f1f5f9;
+  color: #475569;
+  flex-shrink: 0;
+}
+
+.btn-action:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Nút chỉnh sửa */
+.btn-action.edit {
+  background-color: #ecfdf5;
+  color: #059669;
+  border-color: #a7f3d0;
+}
+
+.btn-action.edit:hover {
+  background-color: #059669;
+  color: #ffffff;
+}
+
+/* Nút ẩn voucher (Tạm tắt) */
+.btn-action.lock {
+  background-color: #fef2f2;
+  color: #dc2626;
+  border-color: #fecaca;
+}
+
+.btn-action.lock:hover {
+  background-color: #dc2626;
+  color: #ffffff;
+}
+
+/* Nút hiện voucher (Kích hoạt) */
+.btn-action.unlock {
+  background-color: #ecfdf5;
+  color: #059669;
+  border-color: #a7f3d0;
+}
+
+.btn-action.unlock:hover {
+  background-color: #059669;
+  color: #ffffff;
+}

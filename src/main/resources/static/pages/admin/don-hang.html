@@ -1,0 +1,95 @@
+<!-- =========================================================================
+     don-hang.html - Giao diện Quản lý Đơn hàng TDT Shop
+     Bao gồm: Lọc trạng thái, tìm kiếm mã đơn/SĐT, danh sách đơn hàng, modal chi
+     tiết đơn hàng và chức năng cập nhật trạng thái đơn hàng theo đúng schema.sql
+     ========================================================================= -->
+
+<div class="orders-container">
+  <!-- THANH CÔNG CỤ VÀ BỘ LỌC ĐƠN HÀNG -->
+  <div class="admin-card">
+    <div class="card-header">
+      <div class="card-title">
+        <i class="fa-solid fa-receipt text-primary"></i>
+        Quản lý đơn đặt hàng
+      </div>
+    </div>
+
+    <div class="filter-bar">
+      <!-- Tìm kiếm theo mã đơn, SĐT hoặc Tên người nhận -->
+      <div class="search-input-wrap">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="order-search-input" class="form-control"
+          placeholder="Tìm theo Mã đơn (TDT-...), Tên người nhận, SĐT..."
+          oninput="window.DonHangComponent.onSearch(this.value)">
+      </div>
+
+      <!-- Lọc theo Trạng thái đơn (Nạp động từ CSDL) -->
+      <div class="filter-item">
+        <select id="order-filter-status" class="form-control"
+          onchange="window.DonHangComponent.onStatusFilterChange(this.value)">
+          <option value="">Tất cả trạng thái</option>
+        </select>
+      </div>
+
+      <button class="btn btn-outline" onclick="window.DonHangComponent.resetFilter()">
+        <i class="fa-solid fa-rotate-left"></i> Đặt lại
+      </button>
+    </div>
+
+    <!-- BẢNG DANH SÁCH ĐƠN HÀNG -->
+    <div class="table-responsive">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th style="width: 130px;">Mã đơn</th>
+            <th>Khách hàng</th>
+            <th>Người nhận</th>
+            <th>Số điện thoại</th>
+            <th>Ngày đặt</th>
+            <th>Tổng tiền</th>
+            <th>Trạng thái</th>
+            <th style="text-align: right; width: 100px;">Thao tác</th>
+          </tr>
+        </thead>
+        <tbody id="order-table-body">
+          <!-- Render từ don-hang.js -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- PHÂN TRANG -->
+    <div class="pagination-wrap">
+      <div class="pagination-info" id="order-pagination-info">
+        Hiển thị 0 - 0 trên 0 đơn hàng
+      </div>
+      <div class="pagination-controls" id="order-pagination-controls">
+        <!-- Render nút phân trang -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =========================================================================
+     MODAL CHI TIẾT ĐƠN HÀNG (ORDER DETAIL MODAL)
+     ========================================================================= -->
+<div class="modal-backdrop" id="order-detail-modal">
+  <div class="modal-card modal-lg">
+    <div class="modal-header">
+      <div class="modal-header-title">
+        <i class="fa-solid fa-file-invoice text-primary"></i>
+        <span>Chi tiết đơn hàng <span id="modal-order-code" style="color: var(--primary);"></span></span>
+      </div>
+      <button class="modal-close-btn" onclick="window.DonHangComponent.closeDetailModal()">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div class="modal-body" id="order-detail-content">
+      <!-- Render động từ don-hang.js -->
+    </div>
+
+    <div class="modal-footer" id="order-modal-footer">
+      <!-- Nút chuyển trạng thái hoặc đóng modal -->
+    </div>
+  </div>
+</div>

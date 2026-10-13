@@ -1,0 +1,23 @@
+/* =========================================================================
+   thong-ke.css - Định kiểu Báo cáo Thống kê Admin TDT Shop
+   ========================================================================= */
+
+.statistics-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.time-filter-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.time-filter-buttons .btn.active {
+  background-color: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}

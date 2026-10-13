@@ -1,0 +1,279 @@
+<!-- =========================================================================
+     san-pham.html - Giao diện Quản lý Sản phẩm TDT Shop
+     Bao gồm: Bộ lọc tìm kiếm, bảng danh sách sản phẩm, modal thêm/sửa với
+     form thông số kỹ thuật động (Dynamic Specs) theo chuẩn schema.sql
+     ========================================================================= -->
+
+<div class="products-container">
+  <!-- 1. THANH CÔNG CỤ VÀ BỘ LỌC (FILTER BAR) -->
+  <div class="admin-card">
+    <div class="card-header">
+      <div class="card-title">
+        <i class="fa-solid fa-boxes-stacked"></i>
+        Danh sách sản phẩm TDT Shop
+      </div>
+      <button class="btn btn-primary" onclick="window.SanPhamComponent.openAddModal()">
+        <i class="fa-solid fa-plus"></i> Thêm sản phẩm mới
+      </button>
+    </div>
+
+    <div class="filter-bar">
+      <!-- Tìm kiếm theo tên / SKU -->
+      <div class="search-input-wrap">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="prod-search-input" class="form-control" placeholder="Tìm kiếm theo Tên sản phẩm, Mã SKU..." oninput="window.SanPhamComponent.onSearch(this.value)">
+      </div>
+
+      <!-- Lọc theo Loại sản phẩm (Được nạp từ DB - Thể loại cha: PC, Linh kiện, Phụ kiện) -->
+      <div class="filter-item">
+        <select id="prod-filter-type" class="form-control" onchange="window.SanPhamComponent.onFilterChange()">
+          <option value="">Tất cả loại sản phẩm</option>
+          <!-- Được render động từ DB -->
+        </select>
+      </div>
+
+      <!-- Lọc theo Thương hiệu -->
+      <div class="filter-item">
+        <select id="prod-filter-brand" class="form-control" onchange="window.SanPhamComponent.onFilterChange()">
+          <option value="">Tất cả thương hiệu</option>
+          <!-- Được render từ DB -->
+        </select>
+      </div>
+
+      <!-- Lọc theo Trạng thái -->
+      <div class="filter-item">
+        <select id="prod-filter-status" class="form-control" onchange="window.SanPhamComponent.onFilterChange()">
+          <option value="">Tất cả trạng thái</option>
+          <option value="ACTIVE">Đang bán</option>
+          <option value="OUT_OF_STOCK">Hết hàng</option>
+          <option value="INACTIVE">Tạm ẩn</option>
+        </select>
+      </div>
+
+      <!-- Nút làm mới bộ lọc -->
+      <button class="btn btn-outline" onclick="window.SanPhamComponent.resetFilter()" title="Làm mới bộ lọc">
+        <i class="fa-solid fa-rotate-left"></i> Đặt lại
+      </button>
+    </div>
+
+    <!-- 2. BẢNG DANH SÁCH SẢN PHẨM (Khung bọc có thể lướt cuộn xuống) -->
+    <div class="product-table-scroll-container table-responsive">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th style="width: 60px;">Ảnh</th>
+            <th style="width: 80px;">ID</th>
+            <th>Mã SKU</th>
+            <th>Tên sản phẩm</th>
+            <th>Phân loại</th>
+            <th>Thương hiệu</th>
+            <th>Giá gốc</th>
+            <th>Giá bán</th>
+            <th>Tồn kho</th>
+            <th>Trạng thái</th>
+            <th style="text-align: right; width: 140px;">Thao tác</th>
+          </tr>
+        </thead>
+        <tbody id="product-table-body">
+          <!-- Render động từ san-pham.js -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 3. PHÂN TRANG -->
+    <div class="pagination-wrap">
+      <div class="pagination-info" id="product-pagination-info">
+        Hiển thị 0 - 0 trên 0 sản phẩm
+      </div>
+      <div class="pagination-controls" id="product-pagination-controls">
+        <!-- Render nút phân trang -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =========================================================================
+     MODAL THÊM / CHỈNH SỬA SẢN PHẨM (KÈM FORM THÔNG SỐ SPECS ĐỘNG)
+     ========================================================================= -->
+<div class="modal-backdrop" id="product-modal">
+  <div class="modal-card modal-lg">
+    <div class="modal-header">
+      <div class="modal-header-title">
+        <i class="fa-solid fa-box-open text-primary"></i>
+        <span id="product-modal-title">Thêm sản phẩm mới</span>
+      </div>
+      <button class="modal-close-btn" onclick="window.SanPhamComponent.closeModal()">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <form id="product-form" novalidate onsubmit="window.SanPhamComponent.handleSaveProduct(event)">
+        <input type="hidden" id="prod-form-id">
+
+        <!-- THÔNG TIN CHUNG (GENERAL INFO) -->
+        <h4 class="form-section-title">
+          <i class="fa-solid fa-circle-info"></i> Thông tin cơ bản
+        </h4>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label required">Tên sản phẩm</label>
+            <input type="text" id="prod-name" class="form-control" required placeholder="Nhập tên sản phẩm...">
+          </div>
+          <div class="form-group">
+            <label class="form-label required">Mã SKU</label>
+            <input type="text" id="prod-sku" class="form-control" required placeholder="Ví dụ: CPU-AMD-7800X3D">
+          </div>
+        </div>
+
+        <div class="form-grid-3">
+          <div class="form-group">
+            <label class="form-label required">Loại sản phẩm</label>
+            <select id="prod-type" class="form-control" required onchange="window.SanPhamComponent.onTypeChange()">
+              <!-- Được render động từ DB (PC, Linh kiện, Phụ kiện) -->
+            </select>
+          </div>
+
+          <div class="form-group" id="form-group-component-type">
+            <label class="form-label required">Loại linh kiện</label>
+            <select id="prod-component-type" class="form-control" onchange="window.SanPhamComponent.renderDynamicSpecsForm()">
+              <option value="CPU">Bộ vi xử lý (CPU)</option>
+              <option value="GPU">Card màn hình (VGA / GPU)</option>
+              <option value="MAINBOARD">Bo mạch chủ (Mainboard)</option>
+              <option value="RAM">Bộ nhớ trong (RAM)</option>
+              <option value="SSD">Ổ cứng thể rắn (SSD)</option>
+              <option value="HDD">Ổ cứng cơ (HDD)</option>
+              <option value="PSU">Nguồn máy tính (PSU)</option>
+              <option value="CASE">Vỏ máy tính (Case)</option>
+              <option value="COOLER">Tản nhiệt máy tính (Cooler)</option>
+            </select>
+          </div>
+
+          <div class="form-group" id="form-group-accessory-type" style="display: none;">
+            <label class="form-label required">Phân loại phụ kiện</label>
+            <select id="prod-accessory-type" class="form-control" onchange="window.SanPhamComponent.renderDynamicSpecsForm()">
+              <option value="MONITOR">Màn hình máy tính</option>
+              <option value="KEYBOARD">Bàn phím máy tính</option>
+              <option value="MOUSE">Chuột máy tính</option>
+              <option value="HEADSET">Tai nghe máy tính</option>
+              <option value="SPEAKER">Loa máy tính</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label required" id="prod-brand-label">Thương hiệu</label>
+            <select id="prod-brand" class="form-control" required>
+              <!-- Render động từ DB -->
+            </select>
+          </div>
+        </div>
+
+        <!-- GIÁ BÁN -->
+        <div class="form-grid-3">
+          <div class="form-group">
+            <label class="form-label required">Giá gốc (VNĐ)</label>
+            <input type="number" id="prod-price" class="form-control" min="0" required placeholder="0" oninput="window.SanPhamComponent.calculateSalePrice()">
+          </div>
+          <div class="form-group">
+            <label class="form-label">% Giảm giá (0-100)</label>
+            <input type="number" id="prod-discount" class="form-control" min="0" max="100" value="0" placeholder="0" oninput="window.SanPhamComponent.calculateSalePrice()">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Giá sau giảm (VNĐ)</label>
+            <input type="text" id="prod-sale-price" class="form-control" readonly style="background-color: #f8fafc; font-weight: 700; color: var(--primary);">
+          </div>
+        </div>
+
+        <!-- TỒN KHO & TRẠNG THÁI -->
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label required">Số lượng tồn kho</label>
+            <input type="number" id="prod-stock" class="form-control" min="0" required placeholder="0">
+          </div>
+          <div class="form-group">
+            <label class="form-label required">Trạng thái bán</label>
+            <select id="prod-status" class="form-control" required>
+              <option value="ACTIVE">Đang bán</option>
+              <option value="OUT_OF_STOCK">Hết hàng</option>
+              <option value="INACTIVE">Tạm ẩn</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- HÌNH ẢNH SẢN PHẨM (TỐI ĐA 6 ẢNH) -->
+        <div class="form-group">
+          <div class="product-images-gallery">
+            <div class="gallery-header-bar">
+              <label class="form-label" style="margin: 0; font-weight: 700;">
+                <i class="fa-solid fa-images text-primary"></i> Bộ sưu tập ảnh sản phẩm (Tối đa 6 ảnh)
+              </label>
+              <span class="gallery-count-badge" id="prod-images-count">0 / 6 ảnh</span>
+            </div>
+            <div class="gallery-grid" id="prod-gallery-grid">
+              <!-- Render động từ san-pham.js -->
+            </div>
+            <div class="gallery-input-bar">
+              <input type="text" id="prod-image-url-input" class="form-control" placeholder="Dán đường dẫn ảnh (URL) và bấm Thêm link..." onkeydown="if(event.key==='Enter'){event.preventDefault();window.SanPhamComponent.addCustomImageUrl();}">
+              <button type="button" class="btn btn-outline" onclick="window.SanPhamComponent.addCustomImageUrl()">
+                <i class="fa-solid fa-link"></i> Thêm link
+              </button>
+              <button type="button" class="btn btn-primary" onclick="document.getElementById('prod-gallery-file-input').click()">
+                <i class="fa-solid fa-cloud-arrow-up"></i> Tải ảnh từ máy
+              </button>
+              <input type="file" id="prod-gallery-file-input" accept="image/*" multiple style="display: none;" onchange="window.SanPhamComponent.onImageFilesSelected(event)">
+            </div>
+            <div style="font-size: 11.5px; color: #64748b;">
+              <i class="fa-solid fa-circle-info"></i> Ảnh đầu tiên được dùng làm <strong>Ảnh đại diện</strong> của sản phẩm. Bạn có thể tải cùng lúc nhiều ảnh từ máy tính (tối đa 6 ảnh).
+            </div>
+          </div>
+        </div>
+
+        <!-- MÔ TẢ SẢN PHẨM -->
+        <div class="form-group">
+          <label class="form-label">Mô tả chi tiết</label>
+          <textarea id="prod-description" class="form-control" rows="3" placeholder="Nhập mô tả sản phẩm..."></textarea>
+        </div>
+
+        <!-- =================================================================
+             KHU VỰC THÔNG SỐ KỸ THUẬT ĐỘNG (DYNAMIC SPECS FIELDS)
+             ================================================================= -->
+        <div class="dynamic-specs-section" id="dynamic-specs-container">
+          <!-- Được inject tự động bởi san-pham.js -->
+        </div>
+
+        <div class="modal-footer" style="padding-left: 0; padding-right: 0; margin-top: 20px;">
+          <button type="button" class="btn btn-outline" onclick="window.SanPhamComponent.closeModal()">Hủy bỏ</button>
+          <button type="submit" class="btn btn-primary">
+            <i class="fa-solid fa-floppy-disk"></i> Lưu sản phẩm
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- =========================================================================
+     MODAL XEM CHI TIẾT SẢN PHẨM (VIEW DETAIL MODAL)
+     ========================================================================= -->
+<div class="modal-backdrop" id="product-detail-modal">
+  <div class="modal-card modal-lg">
+    <div class="modal-header">
+      <div class="modal-header-title">
+        <i class="fa-solid fa-circle-info text-primary"></i>
+        <span>Chi tiết sản phẩm</span>
+      </div>
+      <button class="modal-close-btn" onclick="window.SanPhamComponent.closeDetailModal()">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div class="modal-body" id="product-detail-content">
+      <!-- Render chi tiết từ san-pham.js -->
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="window.SanPhamComponent.closeDetailModal()">Đóng</button>
+    </div>
+  </div>
+</div>

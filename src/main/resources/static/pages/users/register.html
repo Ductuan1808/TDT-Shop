@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Đăng ký | TDT Shop</title>
+
+    <link rel="stylesheet" href="/css/auth.css" />
+  </head>
+
+  <body>
+    <div class="auth-page">
+      <!-- ================= LEFT ================= -->
+
+      <div class="auth-showcase register-showcase">
+        <div class="showcase-overlay"></div>
+
+        <div class="showcase-content">
+          <div class="brand">
+            <div class="brand-mark">TDT</div>
+
+            <div>
+              <strong> TDT SHOP </strong>
+
+              <span> PC • LAPTOP • COMPONENTS </span>
+            </div>
+          </div>
+
+          <div class="showcase-text">
+            <span class="eyebrow"> JOIN THE COMMUNITY </span>
+
+            <h1>
+              Your setup.
+              <span>Your identity.</span>
+            </h1>
+
+            <p>
+              Tạo tài khoản TDT Shop để lưu cấu hình, theo dõi đơn hàng và xây
+              dựng bộ PC theo phong cách của riêng bạn.
+            </p>
+
+            <div class="showcase-line"></div>
+
+            <div class="register-points">
+              <div>
+                <span class="point-number"> 01 </span>
+
+                <div>
+                  <strong> Lưu cấu hình </strong>
+
+                  <p>Lưu lại những bộ PC bạn yêu thích.</p>
+                </div>
+              </div>
+
+              <div>
+                <span class="point-number"> 02 </span>
+
+                <div>
+                  <strong> Theo dõi đơn hàng </strong>
+
+                  <p>Quản lý đơn hàng nhanh chóng.</p>
+                </div>
+              </div>
+
+              <div>
+                <span class="point-number"> 03 </span>
+
+                <div>
+                  <strong> Build your PC </strong>
+
+                  <p>Tạo cấu hình phù hợp với nhu cầu.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="showcase-footer">
+            <span> © 2026 TDT SHOP </span>
+
+            <span> BUILD • PLAY • CREATE </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= RIGHT ================= -->
+
+      <div class="auth-form-side register-side">
+        <div class="auth-form-container register-container">
+          <div class="mobile-brand">TDT SHOP</div>
+
+          <div class="form-heading">
+            <span class="small-heading"> CREATE ACCOUNT </span>
+
+            <h2>Tạo tài khoản</h2>
+
+            <p>Đăng ký tài khoản để bắt đầu trải nghiệm TTG Shop.</p>
+          </div>
+
+          <!-- ================= FORM ================= -->
+
+          <form id="registerForm">
+            <!-- FULL NAME -->
+
+            <div class="input-group">
+              <label for="fullName"> Họ và tên </label>
+
+              <div class="input-wrapper">
+                <span class="input-icon"> A </span>
+
+                <input
+                  type="text"
+                  id="fullName"
+                  name="fullName"
+                  placeholder="Nguyễn Văn A"
+                  autocomplete="name"
+                />
+              </div>
+            </div>
+
+            <!-- USERNAME -->
+
+            <div class="input-group">
+              <label for="username">
+                Tên đăng nhập
+                <span>*</span>
+              </label>
+
+              <div class="input-wrapper">
+                <span class="input-icon"> @ </span>
+
+                <input
+                  type="text"
+                  id="username"
+                  name="username"
+                  placeholder="Nhập tên đăng nhập"
+                  autocomplete="username"
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- EMAIL -->
+
+            <div class="input-group">
+              <label for="email">
+                Email
+                <span>*</span>
+              </label>
+
+              <div class="input-wrapper">
+                <span class="input-icon"> @ </span>
+
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="example@email.com"
+                  autocomplete="email"
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- PHONE -->
+
+            <div class="input-group">
+              <label for="phone"> Số điện thoại </label>
+
+              <div class="input-wrapper">
+                <span class="input-icon"> # </span>
+
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  placeholder="0912 345 678"
+                  autocomplete="tel"
+                />
+              </div>
+            </div>
+
+            <!-- PASSWORD -->
+
+            <div class="input-group">
+              <label for="registerPassword">
+                Mật khẩu
+                <span>*</span>
+              </label>
+
+              <div class="input-wrapper">
+                <span class="input-icon"> • </span>
+
+                <input
+                  type="password"
+                  id="registerPassword"
+                  name="password"
+                  placeholder="Tối thiểu 6 ký tự"
+                  autocomplete="new-password"
+                  required
+                />
+
+                <button
+                  type="button"
+                  class="password-toggle"
+                  onclick="togglePassword('registerPassword', this)"
+                >
+                  Hiện
+                </button>
+              </div>
+            </div>
+
+            <!-- CONFIRM PASSWORD -->
+
+            <div class="input-group">
+              <label for="confirmPassword">
+                Xác nhận mật khẩu
+                <span>*</span>
+              </label>
+
+              <div class="input-wrapper">
+                <span class="input-icon"> • </span>
+
+                <input
+                  type="password"
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  placeholder="Nhập lại mật khẩu"
+                  autocomplete="new-password"
+                  required
+                />
+
+                <button
+                  type="button"
+                  class="password-toggle"
+                  onclick="togglePassword('confirmPassword', this)"
+                >
+                  Hiện
+                </button>
+              </div>
+            </div>
+
+            <!-- TERMS -->
+
+            <div class="terms-row">
+              <label class="checkbox-label">
+                <input type="checkbox" id="terms" required />
+
+                <span>
+                  Tôi đồng ý với
+                  <a href="#"> điều khoản sử dụng </a>
+                  của TDT Shop.
+                </span>
+              </label>
+            </div>
+
+            <!-- REGISTER BUTTON -->
+
+            <button type="submit" class="main-button">
+              TẠO TÀI KHOẢN
+
+              <span>→</span>
+            </button>
+
+            <!-- LOGIN -->
+
+            <div class="register-box">
+              <span> Đã có tài khoản? </span>
+
+              <a href="/login"> Đăng nhập </a>
+            </div>
+          </form>
+
+          <div class="form-bottom">
+            <span> TDT SHOP </span>
+            <span> PC & COMPONENTS </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- ================= REGISTER STATUS MODAL ================= -->
+
+    <div class="status-modal" id="registerStatusModal">
+      <div class="status-modal-overlay"></div>
+
+      <div class="status-modal-content">
+        <!-- LOADING -->
+        <div class="status-state" id="registerLoading">
+          <div class="loading-circle"></div>
+
+          <span class="status-label"> TTG SHOP </span>
+
+          <h3>Đang tạo tài khoản</h3>
+
+          <p>Vui lòng chờ trong giây lát...</p>
+
+          <div class="loading-bar">
+            <span></span>
+          </div>
+        </div>
+
+        <!-- SUCCESS -->
+        <div class="status-state success-state" id="registerSuccess">
+          <div class="success-icon">✓</div>
+
+          <span class="status-label"> TTG SHOP </span>
+
+          <h3>Tạo tài khoản thành công</h3>
+
+          <p>
+            Tài khoản của bạn đã được tạo. Bạn sẽ được chuyển đến trang đăng
+            nhập.
+          </p>
+
+          <div class="redirect-text">
+            Chuyển sang đăng nhập
+            <span id="countdown">3</span>s
+          </div>
+
+          <button class="status-button" onclick="goToLogin()">
+            ĐĂNG NHẬP NGAY →
+          </button>
+        </div>
+
+        <!-- ERROR -->
+        <div class="status-state error-state" id="registerError">
+          <div class="error-icon">×</div>
+
+          <span class="status-label"> TDT SHOP </span>
+          <h3>Không thể tạo tài khoản</h3>
+          <p id="registerErrorMessage">Đã xảy ra lỗi. Vui lòng thử lại.</p>
+
+          <button
+            class="status-button error-button"
+            onclick="closeRegisterStatus()"
+          >
+            QUAY LẠI
+          </button>
+        </div>
+      </div>
+    </div>
+    <script src="/js/pages/auth.js"></script>
+  </body>
+</html>

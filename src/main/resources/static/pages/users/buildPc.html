@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/components/header.css" />
+    <link rel="stylesheet" href="/css/components/product-card.css" />
+    <link rel="stylesheet" href="/css/buildPc.css" />
+    <link rel="stylesheet" href="/css/components/footer.css" />
+
+    <title>Xây Dựng Cấu Hình PC - TTGShop</title>
+  </head>
+  <body>
+    <div id="header"></div>
+
+    <section class="page-container">
+      <section class="build-pc-container">
+        <div class="build-title">
+          <h1>CHỌN LINH KIỆN XÂY DỰNG CẤU HÌNH</h1>
+        </div>
+
+        <div class="build-top">
+          <button type="button" class="reset-button" id="deleteConfigButton">
+            LÀM MỚI ↻
+          </button>
+
+          <div class="estimated-cost">
+            <span> Chi phí dự tính: </span>
+
+            <strong id="totalPrice"> 0 đ </strong>
+          </div>
+        </div>
+
+        <div class="component-table">
+          <!-- 1. CPU -->
+          <div class="component-row" data-component="cpu">
+            <div class="component-label">1. CPU</div>
+            <div class="component-content">
+              <button type="button" class="choose-button" data-open-picker="cpu">
+                + Chọn CPU
+              </button>
+
+              <div class="selected-component" hidden>
+                <div class="selected-product-image">
+                  <img src="" alt="" />
+                </div>
+                <div class="selected-product-info">
+                  <h3></h3>
+                  <div class="selected-price">0 VNĐ</div>
+                  <div class="selected-meta">- Kho hàng: <strong>Còn hàng</strong></div>
+                  <div class="selected-meta">- Bảo hành: <strong>36 Tháng</strong></div>
+                </div>
+                <div class="quantity-control">
+                  <button type="button" class="quantity-minus">−</button>
+                  <span class="quantity-value">1</span>
+                  <button type="button" class="quantity-plus">+</button>
+                </div>
+                <div class="selected-total">0 VNĐ</div>
+                <button type="button" class="change-button" data-change-component="cpu" title="Đổi linh kiện">✎</button>
+                <button type="button" class="delete-button" data-delete-component="cpu" title="Xoá linh kiện">🗑</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. MAINBOARD -->
+          <div class="component-row" data-component="mainboard">
+            <div class="component-label">2. MAINBOARD</div>
+            <div class="component-content">
+              <button type="button" class="choose-button" data-open-picker="mainboard">
+                + Chọn Mainboard
+              </button>
+
+              <div class="selected-component" hidden>
+                <div class="selected-product-image">
+                  <img src="" alt="" />
+                </div>
+                <div class="selected-product-info">
+                  <h3></h3>
+                  <div class="selected-price">0 VNĐ</div>
+                  <div class="selected-meta">- Kho hàng: <strong>Còn hàng</strong></div>
+                  <div class="selected-meta">- Bảo hành: <strong>36 Tháng</strong></div>
+                </div>
+                <div class="quantity-control">
+                  <button type="button" class="quantity-minus">−</button>
+                  <span class="quantity-value">1</span>
+                  <button type="button" class="quantity-plus">+</button>
+                </div>
+                <div class="selected-total">0 VNĐ</div>
+                <button type="button" class="change-button" data-change-component="mainboard" title="Đổi linh kiện">✎</button>
+                <button type="button" class="delete-button" data-delete-component="mainboard" title="Xoá linh kiện">🗑</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. RAM -->
+          <div class="component-row" data-component="ram">
+            <div class="component-label">3. RAM</div>
+            <div class="component-content">
+              <button type="button" class="choose-button" data-open-picker="ram">
+                + Chọn RAM
+              </button>
+
+              <div class="selected-component" hidden>
+                <div class="selected-product-image">
+                  <img src="" alt="" />
+                </div>
+                <div class="selected-product-info">
+                  <h3></h3>
+                  <div class="selected-price">0 VNĐ</div>
+                  <div class="selected-meta">- Kho hàng: <strong>Còn hàng</strong></div>
+                  <div class="selected-meta">- Bảo hành: <strong>36 Tháng</strong></div>
+                </div>
+                <div class="quantity-control">
+                  <button type="button" class="quantity-minus">−</button>
+                  <span class="quantity-value">1</span>
+                  <button type="button" class="quantity-plus">+</button>
+                </div>
+                <div class="selected-total">0 VNĐ</div>
+                <button type="button" class="change-button" data-change-component="ram" title="Đổi linh kiện">✎</button>
+                <button type="button" class="delete-button" data-delete-component="ram" title="Xoá linh kiện">🗑</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. GPU -->
+          <div class="component-row" data-component="gpu">
+            <div class="component-label">4. CARD ĐỒ HỌA</div>
+            <div class="component-content">
+              <button type="button" class="choose-button" data-open-picker="gpu">
+                + Chọn Card Đồ Họa
+              </button>
+
+              <div class="selected-component" hidden>
+                <div class="selected-product-image">
+                  <img src="" alt="" />
+                </div>
+                <div class="selected-product-info">
+                  <h3></h3>
+                  <div class="selected-price">0 VNĐ</div>
+                  <div class="selected-meta">- Kho hàng: <strong>Còn hàng</strong></div>
+                  <div class="selected-meta">- Bảo hành: <strong>36 Tháng</strong></div>
+                </div>
+                <div class="quantity-control">
+                  <button type="button" class="quantity-minus">−</button>
+                  <span class="quantity-value">1</span>
+                  <button type="button" class="quantity-plus">+</button>
+                </div>
+                <div class="selected-total">0 VNĐ</div>
+                <button type="button" class="change-button" data-change-component="gpu" title="Đổi linh kiện">✎</button>
+                <button type="button" class="delete-button" data-delete-component="gpu" title="Xoá linh kiện">🗑</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. STORAGE -->
+          <div class="component-row" data-component="storage">
+            <div class="component-label">5. Ổ CỨNG</div>
+            <div class="component-content">
+              <button type="button" class="choose-button" data-open-picker="storage">
+                + Chọn Ổ Cứng
+              </button>
+
+              <div class="selected-component" hidden>
+                <div class="selected-product-image">
+                  <img src="" alt="" />
+                </div>
+                <div class="selected-product-info">
+                  <h3></h3>
+                  <div class="selected-price">0 VNĐ</div>
+                  <div class="selected-meta">- Kho hàng: <strong>Còn hàng</strong></div>
+                  <div class="selected-meta">- Bảo hành: <strong>36 Tháng</strong></div>
+                </div>
+                <div class="quantity-control">
+                  <button type="button" class="quantity-minus">−</button>
+                  <span class="quantity-value">1</span>
+                  <button type="button" class="quantity-plus">+</button>
+                </div>
+                <div class="selected-total">0 VNĐ</div>
+                <button type="button" class="change-button" data-change-component="storage" title="Đổi linh kiện">✎</button>
+                <button type="button" class="delete-button" data-delete-component="storage" title="Xoá linh kiện">🗑</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 6. PSU -->
+          <div class="component-row" data-component="psu">
+            <div class="component-label">6. NGUỒN (PSU)</div>
+            <div class="component-content">
+              <button type="button" class="choose-button" data-open-picker="psu">
+                + Chọn Nguồn (PSU)
+              </button>
+
+              <div class="selected-component" hidden>
+                <div class="selected-product-image">
+                  <img src="" alt="" />
+                </div>
+                <div class="selected-product-info">
+                  <h3></h3>
+                  <div class="selected-price">0 VNĐ</div>
+                  <div class="selected-meta">- Kho hàng: <strong>Còn hàng</strong></div>
+                  <div class="selected-meta">- Bảo hành: <strong>36 Tháng</strong></div>
+                </div>
+                <div class="quantity-control">
+                  <button type="button" class="quantity-minus">−</button>
+                  <span class="quantity-value">1</span>
+                  <button type="button" class="quantity-plus">+</button>
+                </div>
+                <div class="selected-total">0 VNĐ</div>
+                <button type="button" class="change-button" data-change-component="psu" title="Đổi linh kiện">✎</button>
+                <button type="button" class="delete-button" data-delete-component="psu" title="Xoá linh kiện">🗑</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 7. COOLING -->
+          <div class="component-row" data-component="cooling">
+            <div class="component-label">7. TẢN NHIỆT</div>
+            <div class="component-content">
+              <button type="button" class="choose-button" data-open-picker="cooling">
+                + Chọn Tản Nhiệt
+              </button>
+
+              <div class="selected-component" hidden>
+                <div class="selected-product-image">
+                  <img src="" alt="" />
+                </div>
+                <div class="selected-product-info">
+                  <h3></h3>
+                  <div class="selected-price">0 VNĐ</div>
+                  <div class="selected-meta">- Kho hàng: <strong>Còn hàng</strong></div>
+                  <div class="selected-meta">- Bảo hành: <strong>36 Tháng</strong></div>
+                </div>
+                <div class="quantity-control">
+                  <button type="button" class="quantity-minus">−</button>
+                  <span class="quantity-value">1</span>
+                  <button type="button" class="quantity-plus">+</button>
+                </div>
+                <div class="selected-total">0 VNĐ</div>
+                <button type="button" class="change-button" data-change-component="cooling" title="Đổi linh kiện">✎</button>
+                <button type="button" class="delete-button" data-delete-component="cooling" title="Xoá linh kiện">🗑</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 8. CASE -->
+          <div class="component-row" data-component="case">
+            <div class="component-label">8. VỎ CASE</div>
+            <div class="component-content">
+              <button type="button" class="choose-button" data-open-picker="case">
+                + Chọn Vỏ Case
+              </button>
+
+              <div class="selected-component" hidden>
+                <div class="selected-product-image">
+                  <img src="" alt="" />
+                </div>
+                <div class="selected-product-info">
+                  <h3></h3>
+                  <div class="selected-price">0 VNĐ</div>
+                  <div class="selected-meta">- Kho hàng: <strong>Còn hàng</strong></div>
+                  <div class="selected-meta">- Bảo hành: <strong>36 Tháng</strong></div>
+                </div>
+                <div class="quantity-control">
+                  <button type="button" class="quantity-minus">−</button>
+                  <span class="quantity-value">1</span>
+                  <button type="button" class="quantity-plus">+</button>
+                </div>
+                <div class="selected-total">0 VNĐ</div>
+                <button type="button" class="change-button" data-change-component="case" title="Đổi linh kiện">✎</button>
+                <button type="button" class="delete-button" data-delete-component="case" title="Xoá linh kiện">🗑</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 9. MONITOR -->
+          <div class="component-row" data-component="monitor">
+            <div class="component-label">9. MÀN HÌNH</div>
+            <div class="component-content">
+              <button type="button" class="choose-button" data-open-picker="monitor">
+                + Chọn Màn Hình
+              </button>
+
+              <div class="selected-component" hidden>
+                <div class="selected-product-image">
+                  <img src="" alt="" />
+                </div>
+                <div class="selected-product-info">
+                  <h3></h3>
+                  <div class="selected-price">0 VNĐ</div>
+                  <div class="selected-meta">- Kho hàng: <strong>Còn hàng</strong></div>
+                  <div class="selected-meta">- Bảo hành: <strong>36 Tháng</strong></div>
+                </div>
+                <div class="quantity-control">
+                  <button type="button" class="quantity-minus">−</button>
+                  <span class="quantity-value">1</span>
+                  <button type="button" class="quantity-plus">+</button>
+                </div>
+                <div class="selected-total">0 VNĐ</div>
+                <button type="button" class="change-button" data-change-component="monitor" title="Đổi linh kiện">✎</button>
+                <button type="button" class="delete-button" data-delete-component="monitor" title="Xoá linh kiện">🗑</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bottom-total">
+          <span> Chi phí dự tính: </span>
+          <strong id="bottomTotalPrice"> 0 đ </strong>
+        </div>
+
+        <div class="build-actions">
+          <button type="button" class="action-button gray" id="checkConfigButton">Kiểm tra cấu hình</button>
+          <button type="button" class="action-button red" id="addToCartButton">THÊM VÀO GIỎ HÀNG</button>
+        </div>
+      </section>
+    </section>
+
+    <div class="modal-overlay" id="componentPickerModal">
+      <div class="product-modal">
+        <!-- HEADER -->
+        <div class="modal-header">
+          <h2 id="pickerModalTitle">Sản phẩm được đề xuất</h2>
+
+          <button type="button" class="close-modal" id="closePickerButton">
+            ×
+          </button>
+        </div>
+
+        <!-- SEARCH -->
+        <div class="modal-search">
+          <span> 🔍 </span>
+          <input
+            type="text"
+            id="productSearch"
+            placeholder="Bạn cần tìm linh kiện gì?"
+          />
+        </div>
+
+        <!-- FILTER -->
+        <div class="filter-row" id="filterRow">
+          <button type="button" class="filter-btn active" data-filter="all">⚑ Tất cả</button>
+          <button type="button" class="filter-btn" data-filter="under-3m">&lt; 3 Triệu</button>
+          <button type="button" class="filter-btn" data-filter="3m-7m">3 - 7 Triệu</button>
+          <button type="button" class="filter-btn" data-filter="over-7m">&gt; 7 Triệu</button>
+          <button type="button" class="filter-btn" data-filter="in-stock">Còn hàng</button>
+        </div>
+
+        <!-- SORT -->
+        <div class="sort-row">
+          <strong> Sắp xếp theo: </strong>
+
+          <button type="button" class="sort-option active" data-sort="newest">
+            Mới nhất
+          </button>
+
+          <button type="button" class="sort-option" data-sort="asc">
+            Giá tăng dần
+          </button>
+
+          <button type="button" class="sort-option" data-sort="desc">
+            Giá giảm dần
+          </button>
+        </div>
+
+        <!-- MODAL PRODUCTS (Rendered dynamically by JS) -->
+        <div class="modal-products" id="modalProducts"></div>
+      </div>
+    </div>
+
+    <!-- MODAL XÁC NHẬN XOÁ CẤU HÌNH -->
+    <div class="modal-overlay" id="deleteConfigModal">
+      <div class="confirm-modal">
+        <button type="button" class="confirm-close" id="closeDeleteConfigModal">
+          ×
+        </button>
+
+        <div class="confirm-icon">⚠</div>
+
+        <h2>Bạn có chắc muốn làm mới cấu hình này?</h2>
+
+        <p>Tất cả linh kiện bạn đã chọn sẽ được xoá về ban đầu.</p>
+
+        <div class="confirm-buttons">
+          <button
+            type="button"
+            class="cancel-delete-btn"
+            id="cancelDeleteConfig"
+          >
+            Huỷ
+          </button>
+
+          <button
+            type="button"
+            class="confirm-delete-btn"
+            id="confirmDeleteConfig"
+          >
+            Đồng ý
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL KIỂM TRA CẤU HÌNH (API CHECK) -->
+    <div class="modal-overlay" id="checkConfigModal">
+      <div class="confirm-modal check-config-modal">
+        <button type="button" class="confirm-close" id="closeCheckConfigModal">
+          ×
+        </button>
+
+        <div class="confirm-icon check-icon" id="checkConfigIcon">✔</div>
+
+        <h2 id="checkConfigTitle">Kết Quả Kiểm Tra Cấu Hình</h2>
+
+        <div class="check-config-body" id="checkConfigBody">
+          <!-- Báo cáo kiểm tra tương thích -->
+        </div>
+
+        <div class="confirm-buttons">
+          <button
+            type="button"
+            class="confirm-delete-btn"
+            id="okCheckConfig"
+            style="min-width: 140px; background: #002f34;"
+          >
+            Đã hiểu
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="footer"></div>
+    <script src="/js/components/component.js"></script>
+    <script src="/js/pages/components/config.js"></script>
+    <script src="/js/pages/builPc.js"></script>
+    <script src="/js/components/header.js"></script>
+    <script src="/js/components/footer.js"></script>
+  </body>
+</html>

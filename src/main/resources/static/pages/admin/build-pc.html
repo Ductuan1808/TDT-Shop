@@ -1,0 +1,238 @@
+<!-- =========================================================================
+     build-pc.html - Giao diện Quản lý Cấu hình Build PC TDT Shop
+     Bao gồm: Danh sách PC cấu hình sẵn, chọn 8 loại linh kiện chính (CPU, Mainboard,
+     RAM, GPU, SSD, PSU, Case, Cooler) và 1 phụ kiện là Màn hình (Monitor).
+     Module kiểm tra tính hợp lệ phần cứng với popup to ở giữa kèm nút OK.
+     ========================================================================= -->
+
+<div class="build-pc-admin-container">
+  <div class="admin-card">
+    <div class="card-header">
+      <div class="card-title">
+        <i class="fa-solid fa-desktop text-primary"></i>
+        Quản lý dàn PC cấu hình sẵn (Pre-built PC)
+      </div>
+      <button class="btn btn-primary" onclick="window.BuildPcComponent.openAddModal()">
+        <i class="fa-solid fa-plus"></i> Thêm cấu hình PC mới
+      </button>
+    </div>
+
+    <!-- TÌM KIẾM VÀ LỌC -->
+    <div class="filter-bar">
+      <div class="search-input-wrap">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="build-search-input" class="form-control"
+          placeholder="Tìm theo tên bộ PC hoặc mã linh kiện..." oninput="window.BuildPcComponent.onSearch(this.value)">
+      </div>
+
+      <div class="filter-item">
+        <select id="build-filter-status" class="form-control"
+          onchange="window.BuildPcComponent.onStatusFilterChange(this.value)">
+          <option value="">Tất cả trạng thái</option>
+          <option value="ACTIVE">Kích hoạt (ACTIVE)</option>
+          <option value="INACTIVE">Tạm ẩn (INACTIVE)</option>
+        </select>
+      </div>
+
+      <!-- Nút làm mới bộ lọc -->
+      <button class="btn btn-outline" onclick="window.BuildPcComponent.resetFilter()" title="Làm mới bộ lọc">
+        <i class="fa-solid fa-rotate-left"></i> Đặt lại
+      </button>
+    </div>
+
+    <!-- BẢNG DANH SÁCH DÀN PC -->
+    <div class="build-pc-table-scroll-container table-responsive">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th style="width: 80px;">ID Build</th>
+            <th>Tên bộ PC</th>
+            <th>Mã SKU</th>
+            <th>Giá niêm yết</th>
+            <th>Linh kiện chính cấu thành & Màn hình</th>
+            <th>Trạng thái</th>
+            <th style="text-align: right; width: 140px;">Thao tác</th>
+          </tr>
+        </thead>
+        <tbody id="build-pc-table-body">
+          <!-- Render từ build-pc-logic.js -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- PHÂN TRANG -->
+    <div class="pagination-wrap" id="build-pc-pagination-container">
+      <div class="pagination-info" id="build-pc-pagination-info">Đang tải dữ liệu...</div>
+      <div class="pagination-controls" id="build-pc-pagination-controls"></div>
+    </div>
+  </div>
+</div>
+
+<!-- =========================================================================
+     MODAL THÊM / SỬA CẤU HÌNH PC BUILD
+     ========================================================================= -->
+<div class="modal-backdrop" id="build-pc-modal">
+  <div class="modal-card modal-lg">
+    <div class="modal-header">
+      <div class="modal-header-title">
+        <i class="fa-solid fa-wrench text-primary"></i>
+        <span id="build-pc-modal-title">Cấu hình dàn PC</span>
+      </div>
+      <button class="modal-close-btn" onclick="window.BuildPcComponent.closeModal()">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <form id="build-pc-form" onsubmit="window.BuildPcComponent.handleSave(event)">
+        <input type="hidden" id="build-id">
+
+        <!-- THÔNG TIN BỘ PC -->
+        <h4 class="form-section-title"><i class="fa-solid fa-circle-info"></i> Thông tin máy tính</h4>
+        <div class="form-grid-3">
+          <div class="form-group">
+            <label class="form-label required">Sản phẩm PC đại diện (products)</label>
+            <select id="build-product-id" class="form-control" required
+              onchange="window.BuildPcComponent.onProductSelectChange(this.value)">
+              <option value="">-- Chọn sản phẩm PC đại diện --</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label required">Giá bán trọn bộ (VNĐ)</label>
+            <input type="number" id="build-price" class="form-control" min="0" required placeholder="30000000">
+          </div>
+          <div class="form-group">
+            <label class="form-label required">Trạng thái hoạt động</label>
+            <select id="build-status" class="form-control" required>
+              <option value="ACTIVE">Kích hoạt (ACTIVE)</option>
+              <option value="INACTIVE">Tạm ẩn (INACTIVE)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- DANH SÁCH 8 LOẠI LINH KIỆN VÀ 1 PHỤ KIỆN MÀN HÌNH (pc_build_components) -->
+        <h4 class="form-section-title"><i class="fa-solid fa-microchip"></i> 8 Loại linh kiện & 1 Phụ kiện màn hình</h4>
+        <div class="components-picker-grid">
+          <!-- 1. CPU -->
+          <div class="form-group">
+            <label class="form-label required">1. Bộ vi xử lý (CPU)</label>
+            <select id="pick-cpu" class="form-control component-select" data-type="CPU" required></select>
+          </div>
+
+          <!-- 2. Mainboard -->
+          <div class="form-group">
+            <label class="form-label required">2. Bo mạch chủ (Mainboard)</label>
+            <select id="pick-mainboard" class="form-control component-select" data-type="MAINBOARD" required></select>
+          </div>
+
+          <!-- 3. RAM -->
+          <div class="form-group">
+            <label class="form-label required">3. Bộ nhớ RAM</label>
+            <div style="display: flex; gap: 8px;">
+              <select id="pick-ram" class="form-control component-select" data-type="RAM" style="flex: 1;"
+                required></select>
+              <input type="number" id="pick-ram-qty" class="form-control" min="1" max="8" value="2" title="Số thanh RAM"
+                style="width: 70px;">
+            </div>
+          </div>
+
+          <!-- 4. GPU -->
+          <div class="form-group">
+            <label class="form-label required">4. Card màn hình (GPU)</label>
+            <select id="pick-gpu" class="form-control component-select" data-type="GPU" required></select>
+          </div>
+
+          <!-- 5. SSD -->
+          <div class="form-group">
+            <label class="form-label required">5. Ổ cứng SSD</label>
+            <select id="pick-ssd" class="form-control component-select" data-type="SSD" required></select>
+          </div>
+
+          <!-- 6. PSU -->
+          <div class="form-group">
+            <label class="form-label required">6. Nguồn máy tính (PSU)</label>
+            <select id="pick-psu" class="form-control component-select" data-type="PSU" required></select>
+          </div>
+
+          <!-- 7. Case -->
+          <div class="form-group">
+            <label class="form-label required">7. Vỏ Case máy tính</label>
+            <select id="pick-case" class="form-control component-select" data-type="CASE" required></select>
+          </div>
+
+          <!-- 8. Cooler -->
+          <div class="form-group">
+            <label class="form-label required">8. Tản nhiệt (Cooler)</label>
+            <select id="pick-cooler" class="form-control component-select" data-type="COOLER" required></select>
+          </div>
+
+          <!-- 9. Monitor -->
+          <div class="form-group">
+            <label class="form-label">9. Phụ kiện: Màn hình (Monitor)</label>
+            <select id="pick-monitor" class="form-control component-select" data-type="MONITOR">
+              <option value="">-- Không kèm màn hình (Mua riêng) --</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="modal-footer"
+          style="padding-left: 0; padding-right: 0; margin-top: 20px; display: flex; justify-content: space-between; align-items: center;">
+          <button type="button" class="btn btn-outline" onclick="window.BuildPcComponent.checkCompatibility()"
+            title="Kiểm tra tương thích phần cứng giữa các linh kiện đã chọn">
+            <i class="fa-solid fa-microchip text-primary"></i> Kiểm tra tương thích
+          </button>
+          <div style="display: flex; gap: 8px;">
+            <button type="button" class="btn btn-outline" onclick="window.BuildPcComponent.closeModal()">Hủy</button>
+            <button type="submit" class="btn btn-primary" id="build-btn-submit">Lưu cấu hình PC</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- =========================================================================
+     MODAL XEM CHI TIẾT DÀN PC (BUILD DETAIL MODAL)
+     ========================================================================= -->
+<div class="modal-backdrop" id="build-detail-modal">
+  <div class="modal-card modal-lg">
+    <div class="modal-header">
+      <div class="modal-header-title">
+        <i class="fa-solid fa-desktop text-primary"></i>
+        <span>Chi tiết cấu hình dàn PC</span>
+      </div>
+      <button class="modal-close-btn" onclick="window.BuildPcComponent.closeDetailModal()">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div class="modal-body" id="build-detail-content"></div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="window.BuildPcComponent.closeDetailModal()">Đóng</button>
+    </div>
+  </div>
+</div>
+
+<!-- =========================================================================
+     MODAL POPUP KIỂM TRA ĐỘ TƯƠNG THÍCH LINH KIỆN (COMPATIBILITY POPUP TO Ở GIỮA)
+     ========================================================================= -->
+<div class="modal-backdrop build-compat-backdrop" id="build-compat-modal">
+  <div class="modal-card modal-compat-card">
+    <div class="modal-header">
+      <div class="modal-header-title">
+        <i class="fa-solid fa-microchip text-primary"></i>
+        <span id="build-compat-modal-header-title">Kiểm tra tính hợp lệ & Độ tương thích PC</span>
+      </div>
+      <button type="button" class="modal-close-btn" onclick="window.BuildPcComponent.closeCompatModal()">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div class="modal-body" id="build-compat-modal-body" style="max-height: 68vh; overflow-y: auto; padding: 22px 26px;">
+      <!-- Render động từ build-pc-logic.js -->
+    </div>
+    <div class="modal-footer" style="display: flex; justify-content: flex-end; gap: 10px;">
+      <button type="button" class="btn btn-primary" onclick="window.BuildPcComponent.closeCompatModal()">
+        <i class="fa-solid fa-check"></i> OK
+      </button>
+    </div>
+  </div>
+</div>

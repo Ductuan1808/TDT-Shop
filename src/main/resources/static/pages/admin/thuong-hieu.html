@@ -1,0 +1,133 @@
+<!-- =========================================================================
+     thuong-hieu.html - Giao diện Quản lý Thương hiệu TDT Shop
+     Bao gồm: Danh sách thương hiệu, logo preview, modal thêm/sửa thương hiệu
+     tuân thủ nghiêm ngặt schema.sql (id, name, logo, status, created_at)
+     ========================================================================= -->
+
+<div class="brands-container">
+  <div class="admin-card">
+    <div class="card-header">
+      <div class="card-title">
+        <i class="fa-solid fa-tags text-primary"></i>
+        Quản lý thương hiệu đối tác
+      </div>
+      <button class="btn btn-primary" onclick="window.ThuongHieuComponent.openAddModal()">
+        <i class="fa-solid fa-plus"></i> Thêm thương hiệu mới
+      </button>
+    </div>
+
+    <!-- TÌM KIẾM VÀ LỌC -->
+    <div class="filter-bar">
+      <div class="search-input-wrap">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="brand-search-input" class="form-control"
+          placeholder="Tìm theo tên thương hiệu hoặc trạng thái..."
+          oninput="window.ThuongHieuLogic.onSearch(this.value)">
+      </div>
+
+      <div class="filter-item">
+        <select id="brand-filter-status" class="form-control"
+          onchange="window.ThuongHieuLogic.onStatusFilterChange(this.value)">
+
+        </select>
+      </div>
+
+      <!-- Nút làm mới bộ lọc -->
+      <button class="btn btn-outline" onclick="window.ThuongHieuLogic.resetFilter()" title="Làm mới bộ lọc">
+        <i class="fa-solid fa-rotate-left"></i> Đặt lại
+      </button>
+    </div>
+
+    <!-- BẢNG THƯƠNG HIỆU -->
+    <div class="brand-table-scroll-container table-responsive">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th style="width: 70px;">ID</th>
+            <th style="width: 100px;">Logo</th>
+            <th>Tên thương hiệu</th>
+            <th>Trạng thái</th>
+            <th>Ngày tạo</th>
+            <th style="text-align: right; width: 100px;">Thao tác</th>
+          </tr>
+        </thead>
+        <tbody id="brand-table-body">
+          <!-- Render từ thuong-hieu.js -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- PHÂN TRANG -->
+    <div class="pagination-wrap" id="brand-pagination-container">
+      <div class="pagination-info" id="brand-pagination-info">Đang tải dữ liệu...</div>
+      <div class="pagination-controls" id="brand-pagination-controls"></div>
+    </div>
+  </div>
+</div>
+
+<!-- =========================================================================
+     MODAL THÊM / SỬA THƯƠNG HIỆU
+     ========================================================================= -->
+<div class="modal-backdrop" id="brand-modal">
+  <div class="modal-card">
+    <div class="modal-header">
+      <div class="modal-header-title">
+        <i class="fa-solid fa-tag text-primary"></i>
+        <span id="brand-modal-title">Thêm thương hiệu mới</span>
+      </div>
+      <button class="modal-close-btn" onclick="window.ThuongHieuComponent.closeModal()">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <form id="brand-form" onsubmit="window.ThuongHieuComponent.handleSave(event)">
+        <input type="hidden" id="brand-id">
+
+        <div class="form-group">
+          <label class="form-label required">Tên thương hiệu (name)</label>
+          <input type="text" id="brand-name" class="form-control" required placeholder="Ví dụ: ASUS, GIGABYTE, AMD...">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Logo thương hiệu (logo)</label>
+          <div style="display: flex; gap: 14px; align-items: center; margin-bottom: 8px;">
+            <div id="brand-logo-preview-box"
+              style="width: 80px; height: 50px; border: 1px solid var(--border-color); border-radius: 6px; display: flex; align-items: center; justify-content: center; background: #f8fafc; padding: 4px;">
+              <img id="brand-logo-preview" src="https://upload.wikimedia.org/wikipedia/commons/2/2e/ASUS_Logo.svg"
+                alt="Preview" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+            </div>
+            <div style="flex: 1; display: flex; flex-direction: column; gap: 8px;">
+              <input type="text" id="brand-logo-url" class="form-control"
+                placeholder="Dán link ảnh Logo (URL) hoặc chọn file từ máy..."
+                onchange="window.ThuongHieuComponent.onLogoUrlChange(this.value)">
+              <div style="display: flex; gap: 8px; align-items: center;">
+                <label for="brand-logo-file" class="btn btn-outline btn-sm" style="cursor: pointer; margin-bottom: 0;">
+                  <i class="fa-solid fa-folder-open"></i> Chọn ảnh từ máy tính
+                </label>
+                <input type="file" id="brand-logo-file" accept="image/*" style="display: none;"
+                  onchange="window.ThuongHieuComponent.onLogoFileSelect(event)">
+                <button type="button" class="btn btn-outline btn-sm" onclick="window.ThuongHieuComponent.clearLogo()">
+                  <i class="fa-solid fa-trash"></i> Xóa ảnh
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label required">Trạng thái (status)</label>
+          <select id="brand-status" class="form-control" required>
+            <option value="ACTIVE">Đang hoạt động (Hiện)</option>
+            <option value="INACTIVE">Tạm ngưng (Ẩn)</option>
+          </select>
+        </div>
+
+        <div class="modal-footer" style="padding-left: 0; padding-right: 0; margin-top: 20px;">
+          <button type="button" class="btn btn-outline" onclick="window.ThuongHieuLogic.closeModal()">Hủy</button>
+          <button type="submit" class="btn btn-primary" id="brand-save-btn">Lưu thương hiệu</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

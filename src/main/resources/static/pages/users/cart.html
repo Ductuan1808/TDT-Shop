@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/components/header.css" />
+    <link rel="stylesheet" href="/css/card.css" />
+    <link rel="stylesheet" href="/css/components/footer.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <title>Giỏ Hàng - TTGShop</title>
+  </head>
+  <body>
+    <div id="header"></div>
+
+    <div class="container">
+      <!-- BREADCRUMB -->
+      <div class="breadcrumb">
+        Trang chủ &nbsp;>&nbsp; <span>Thông tin giỏ hàng</span>
+      </div>
+
+      <div class="page-title">Giỏ hàng</div>
+
+      <!-- ================= CART ================= -->
+
+      <div class="cart-wrapper">
+        <div class="cart-header">
+          <button class="clear-cart" onclick="clearCart()">
+            Xóa toàn bộ giỏ hàng
+          </button>
+        </div>
+
+        <!-- PRODUCT 1 - NORMAL PRODUCT -->
+
+        <div class="cart-item product-item" data-price="69680000">
+          <div class="product-info">
+            <div class="product-image">
+              <img
+                src="https://placehold.co/300x300?text=PC+Gaming"
+                alt="PC Gaming"
+              />
+            </div>
+
+            <div class="product-details">
+              <!-- CLICK PRODUCT NAME -->
+              <a href="/product-detail?id=1" class="product-name">
+                PC TTG AMD GAMING LUXURY RYZEN 7 7800X3D - RTX 5070 Ti 16GB
+                BLACK
+              </a>
+
+              <div class="config-row">
+                <strong>Bảo hành:</strong>
+                <span class="config-value">36 Tháng</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="price">69.680.000 VNĐ</div>
+
+          <div class="quantity-control">
+            <button class="quantity-btn minus">-</button>
+
+            <div class="quantity-number">1</div>
+
+            <button class="quantity-btn plus">+</button>
+          </div>
+
+          <div class="total-price">69.680.000 VNĐ</div>
+
+          <button class="remove-product">🗑</button>
+        </div>
+
+        <!-- PRODUCT 2 - CONFIGURED PRODUCT -->
+
+        <div
+          class="cart-item product-item configured-product"
+          data-price="74980000"
+        >
+          <div class="product-info">
+            <div class="product-image">
+              <img
+                src="https://placehold.co/300x300?text=Custom+PC"
+                alt="Custom PC"
+              />
+            </div>
+
+            <div class="product-details">
+              <!-- CLICK PRODUCT NAME -->
+
+              <a href="/product-detail?id=1" class="product-name">
+                PC TTG GAMING CORE ULTRA 5 250K PLUS - RTX 5080 16GB
+              </a>
+
+              <!-- CONFIGURATION -->
+
+              <div class="config-row">
+                <strong>RAM:</strong>
+                <span class="config-value"> RAM 32GB DDR5_1 </span>
+              </div>
+
+              <div class="config-row">
+                <strong>Ổ cứng SSD:</strong>
+                <span class="config-value"> SSD 500GB </span>
+              </div>
+
+              <div class="config-row">
+                <strong>Tản nhiệt:</strong>
+                <span class="config-value"> Tản nhiệt khí </span>
+              </div>
+
+              <div class="config-row">
+                <strong>Bảo hành:</strong>
+                <span class="config-value"> 36 Tháng </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="price">74.980.000 VNĐ</div>
+
+          <div class="quantity-control">
+            <button class="quantity-btn minus">-</button>
+
+            <div class="quantity-number">1</div>
+
+            <button class="quantity-btn plus">+</button>
+          </div>
+
+          <div class="total-price">74.980.000 VNĐ</div>
+
+          <button class="remove-product">🗑</button>
+        </div>
+
+        <!-- CART TOTAL -->
+
+        <div class="cart-total">
+          Tổng tiền:
+          <span id="cartTotal"> 144.660.000 VNĐ </span>
+        </div>
+      </div>
+
+      <!-- ================= CHECKOUT ================= -->
+
+      <div class="checkout-section">
+        <!-- ================= BUYER INFO ================= -->
+
+        <div class="buyer-info">
+          <div class="box-title">THÔNG TIN NGƯỜI MUA</div>
+
+          <p class="buyer-description">
+            Để tiếp tục đặt hàng, quý khách xin vui lòng nhập thông tin bên dưới
+          </p>
+
+          <div class="form-group">
+            <label> Họ tên<span class="required">*</span> </label>
+
+            <input type="text" class="form-control" />
+          </div>
+
+          <div class="form-group">
+            <label> SĐT<span class="required">*</span> </label>
+
+            <input type="text" class="form-control" />
+          </div>
+
+          <div class="form-group">
+            <label> Email<span class="required">*</span> </label>
+
+            <input type="email" class="form-control" />
+          </div>
+
+          <div class="form-group">
+            <label> Địa chỉ<span class="required">*</span> </label>
+
+            <textarea class="form-control"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label> Tỉnh/Thành phố<span class="required">*</span> </label>
+
+            <select class="form-control">
+              <option>Chọn Tỉnh/Thành phố</option>
+
+              <option>Hà Nội</option>
+              <option>Hồ Chí Minh</option>
+              <option>Đà Nẵng</option>
+              <option>Hải Phòng</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label> Quận/Huyện<span class="required">*</span> </label>
+
+            <select class="form-control">
+              <option>Chọn Quận/Huyện</option>
+
+              <option>Quận Cầu Giấy</option>
+              <option>Quận Đống Đa</option>
+              <option>Quận Ba Đình</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label> Ghi chú </label>
+
+            <textarea class="form-control"></textarea>
+          </div>
+        </div>
+
+        <!-- ================= ORDER SUMMARY ================= -->
+
+        <div class="order-summary">
+          <div class="box-title">TỔNG TIỀN</div>
+
+          <!-- VOUCHER -->
+
+          <div class="voucher-box">
+            <input
+              type="text"
+              id="voucherInput"
+              class="voucher-input"
+              placeholder="Mã Voucher"
+            />
+
+            <button class="voucher-button" onclick="openVoucherModal()">
+              🏷 Chọn mã voucher
+            </button>
+          </div>
+
+          <!-- PRICE SUMMARY -->
+
+          <div class="summary-row">
+            <span>Tổng cộng</span>
+
+            <span id="summaryTotal"> 144.660.000 VNĐ </span>
+          </div>
+
+          <div class="summary-row">
+            <span>Giảm giá Voucher</span>
+
+            <span id="discountAmount"> 0 VNĐ </span>
+          </div>
+
+          <div class="summary-row final-price">
+            <strong>Thành tiền</strong>
+
+            <span id="finalTotal"> 144.660.000 VNĐ </span>
+          </div>
+
+          <div class="vat">(Giá đã bao gồm VAT)</div>
+
+          <!-- AGREEMENT -->
+
+          <div class="agreement">
+            <input type="checkbox" />
+
+            Tôi đã đọc và đồng ý với các Điều kiện giao dịch chung của website
+          </div>
+
+          <!-- BUTTONS -->
+
+          <div class="action-buttons">
+            <button class="action-btn quote-btn">🖨 IN BÁO GIÁ</button>
+
+            <button class="action-btn order-btn">✔ ĐẶT HÀNG</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= VOUCHER MODAL ================= -->
+
+    <div class="modal" id="voucherModal">
+      <div class="modal-content">
+        <!-- HEADER -->
+
+        <div class="modal-header">
+          <h3>Chọn Voucher</h3>
+
+          <button class="close-modal" onclick="closeVoucherModal()">×</button>
+        </div>
+
+        <!-- BODY -->
+
+        <div class="modal-body">
+          <!-- INPUT VOUCHER -->
+
+          <div class="voucher-apply-box">
+            <input
+              type="text"
+              id="modalVoucherInput"
+              placeholder="Nhập mã voucher"
+            />
+
+            <button class="apply-btn" onclick="applyVoucherInput()">
+              Áp dụng
+            </button>
+          </div>
+
+          <!-- VOUCHER 1 -->
+
+          <div class="voucher-item">
+            <div class="voucher-info">
+              <h4>GIẢM 500.000 VNĐ</h4>
+
+              <p>Đơn hàng từ 20.000.000 VNĐ</p>
+            </div>
+
+            <button
+              class="select-voucher"
+              onclick="selectVoucher('GIAM500K', 500000)"
+            >
+              Chọn
+            </button>
+          </div>
+
+          <!-- VOUCHER 2 -->
+
+          <div class="voucher-item">
+            <div class="voucher-info">
+              <h4>GIẢM 1.000.000 VNĐ</h4>
+
+              <p>Đơn hàng từ 50.000.000 VNĐ</p>
+            </div>
+
+            <button
+              class="select-voucher"
+              onclick="selectVoucher('GIAM1TR', 1000000)"
+            >
+              Chọn
+            </button>
+          </div>
+
+          <!-- VOUCHER 3 -->
+
+          <div class="voucher-item">
+            <div class="voucher-info">
+              <h4>GIẢM 2.000.000 VNĐ</h4>
+
+              <p>Đơn hàng từ 100.000.000 VNĐ</p>
+            </div>
+
+            <button
+              class="select-voucher"
+              onclick="selectVoucher('GIAM2TR', 2000000)"
+            >
+              Chọn
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="footer"></div>
+
+    <script src="/js/components/component.js"></script>
+    <script src="/js/components/header.js"></script>
+    <script src="/js/components/footer.js"></script>
+    <script src="/js/pages/card.js"></script>
+  </body>
+</html>

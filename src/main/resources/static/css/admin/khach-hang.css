@@ -1,0 +1,153 @@
+/* =========================================================================
+   khach-hang.css - Định kiểu Quản lý Khách hàng Admin TDT Shop
+   Đồng bộ giao diện Card, Bảng và Nút thao tác giống màn hình Sản phẩm
+   ========================================================================= */
+
+.customers-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+/* =========================================================================
+   KHUNG BỌC CUỘN BẢNG KHÁCH HÀNG (GIỐNG MỤC SẢN PHẨM)
+   ========================================================================= */
+.customer-table-scroll-container {
+  max-height: 580px;
+  overflow-y: auto;
+  overflow-x: auto;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background-color: #ffffff;
+  position: relative;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.customer-table-scroll-container table.admin-table {
+  margin-bottom: 0;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.customer-table-scroll-container thead th {
+  position: sticky;
+  top: 0;
+  background-color: #f8fafc;
+  z-index: 10;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+  white-space: nowrap;
+}
+
+/* =========================================================================
+   CÁC NÚT THAO TÁC NẰM NGANG CÙNG NHAU (KHÔNG BỊ CHỒNG LÊN NHAU)
+   ========================================================================= */
+.action-btns-wrap {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 8px !important;
+  white-space: nowrap !important;
+}
+
+.btn-action {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s ease;
+  background-color: #f1f5f9;
+  color: #475569;
+  flex-shrink: 0;
+}
+
+.btn-action:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Nút xem chi tiết */
+.btn-action.view {
+  background-color: #e0f2fe;
+  color: #0284c7;
+  border-color: #bae6fd;
+}
+
+.btn-action.view:hover {
+  background-color: #0284c7;
+  color: #ffffff;
+}
+
+/* Nút khóa tài khoản */
+.btn-action.lock {
+  background-color: #fef2f2;
+  color: #dc2626;
+  border-color: #fecaca;
+}
+
+.btn-action.lock:hover {
+  background-color: #dc2626;
+  color: #ffffff;
+}
+
+/* Nút mở khóa tài khoản */
+.btn-action.unlock {
+  background-color: #ecfdf5;
+  color: #059669;
+  border-color: #a7f3d0;
+}
+
+.btn-action.unlock:hover {
+  background-color: #059669;
+  color: #ffffff;
+}
+
+/* =========================================================================
+   CHI TIẾT THÔNG TIN TÀI KHOẢN TRONG MODAL
+   ========================================================================= */
+.customer-info-card {
+  background-color: #f8fafc;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  padding: 20px;
+}
+
+.customer-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 600px) {
+  .customer-info-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.customer-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.customer-info-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.customer-info-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1e293b;
+}

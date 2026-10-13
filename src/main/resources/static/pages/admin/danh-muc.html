@@ -1,0 +1,148 @@
+<!-- =========================================================================
+     danh-muc.html - Giao diện Quản lý Danh mục TDT Shop
+     Dữ liệu truy vấn trực tiếp từ CSDL qua /api/admin/categories.
+     Bao gồm:
+     - Bảng danh mục sản phẩm (cha và con)
+     - Bộ lọc tìm kiếm và trạng thái nạp động từ CSDL
+     - Bật/tắt nhanh Hiện trang chủ (show_on_home) và Hiện Menu (show_on_menu)
+     - Modal thêm mới và chỉnh sửa danh mục lưu vào CSDL
+     - Xóa danh mục an toàn khỏi CSDL
+     ========================================================================= -->
+
+<div class="categories-container">
+  <div class="admin-card">
+    <div class="card-header">
+      <div class="card-title">
+        <i class="fa-solid fa-layer-group text-primary"></i>
+        Quản lý danh mục sản phẩm
+      </div>
+      <button class="btn btn-primary" onclick="window.DanhMucComponent.openAddModal()">
+        <i class="fa-solid fa-plus"></i> Thêm danh mục mới
+      </button>
+    </div>
+
+    <!-- BỘ LỌC VÀ TÌM KIẾM TỪ CSDL -->
+    <div class="filter-bar">
+      <!-- Tìm theo tên -->
+      <div class="search-input-wrap">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="cat-search-input" class="form-control" placeholder="Tìm theo tên danh mục..." oninput="window.DanhMucComponent.onSearch(this.value)">
+      </div>
+
+      <!-- Lọc theo cấp danh mục -->
+      <div class="filter-item">
+        <select id="cat-filter-parent" class="form-control" onchange="window.DanhMucComponent.onParentFilterChange(this.value)">
+          <option value="">Tất cả danh mục (Cả cha và con)</option>
+          <option value="ROOT">Chỉ danh mục gốc (Cấp 1)</option>
+          <option value="SUB">Chỉ danh mục con (Cấp 2)</option>
+        </select>
+      </div>
+
+      <!-- Lọc theo trạng thái -->
+      <div class="filter-item">
+        <select id="cat-filter-status" class="form-control" onchange="window.DanhMucComponent.onStatusFilterChange(this.value)">
+          <option value="">Tất cả trạng thái</option>
+          <option value="ACTIVE">Đang hoạt động (Hiện)</option>
+          <option value="INACTIVE">Tạm ngưng (Ẩn)</option>
+        </select>
+      </div>
+
+      <!-- Nút làm mới bộ lọc -->
+      <button class="btn btn-outline" onclick="window.DanhMucComponent.resetFilter()" title="Làm mới bộ lọc">
+        <i class="fa-solid fa-rotate-left"></i> Đặt lại
+      </button>
+    </div>
+
+    <!-- BẢNG DANH MỤC TRUY VẤN TỪ CSDL -->
+    <div class="category-table-scroll-container table-responsive">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th style="width: 70px;">ID</th>
+            <th>Tên danh mục</th>
+            <th>Danh mục cha</th>
+            <th>Mô tả</th>
+            <th style="text-align: center; width: 130px;">Hiện trang chủ</th>
+            <th style="text-align: center; width: 120px;">Hiện Menu</th>
+            <th style="width: 120px;">Trạng thái</th>
+            <th style="text-align: right; width: 100px;">Thao tác</th>
+          </tr>
+        </thead>
+        <tbody id="category-table-body">
+          <!-- Render động từ danh-muc.js -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- PHÂN TRANG -->
+    <div class="pagination-wrap" id="category-pagination-container">
+      <div class="pagination-info" id="category-pagination-info">Đang tải dữ liệu...</div>
+      <div class="pagination-controls" id="category-pagination-controls"></div>
+    </div>
+  </div>
+</div>
+
+<!-- =========================================================================
+     MODAL THÊM / CHỈNH SỬA DANH MỤC (LƯU TRỰC TIẾP VÀO CSDL)
+     ========================================================================= -->
+<div class="modal-backdrop" id="category-modal">
+  <div class="modal-card">
+    <div class="modal-header">
+      <div class="modal-header-title">
+        <i class="fa-solid fa-folder-plus text-primary"></i>
+        <span id="category-modal-title">Thêm danh mục mới</span>
+      </div>
+      <button class="modal-close-btn" onclick="window.DanhMucComponent.closeModal()">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <form id="category-form" onsubmit="window.DanhMucComponent.handleSave(event)">
+        <input type="hidden" id="cat-id">
+
+        <div class="form-group" style="margin-bottom: 14px;">
+          <label class="form-label required" style="font-weight: 600; font-size: 13px; display: block; margin-bottom: 6px;">Tên danh mục</label>
+          <input type="text" id="cat-name" class="form-control" required placeholder="Ví dụ: Bo Mạch Chủ (Mainboard)">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 14px;">
+          <label class="form-label" style="font-weight: 600; font-size: 13px; display: block; margin-bottom: 6px;">Danh mục cha (parent_id)</label>
+          <select id="cat-parent" class="form-control">
+            <option value="">-- Là danh mục gốc (Không có cha) --</option>
+            <!-- Render danh sách cha từ DB qua danh-muc.js -->
+          </select>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 14px;">
+          <label class="form-label" style="font-weight: 600; font-size: 13px; display: block; margin-bottom: 6px;">Mô tả danh mục</label>
+          <textarea id="cat-desc" class="form-control" rows="3" placeholder="Nhập mô tả ngắn gọn..."></textarea>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 14px;">
+          <label class="form-label" style="font-weight: 600; font-size: 13px; display: block; margin-bottom: 6px;">Trạng thái hoạt động</label>
+          <select id="cat-status" class="form-control" onchange="window.DanhMucLogic.onModalStatusChange(this.value)">
+            <option value="ACTIVE">ACTIVE (Kích hoạt)</option>
+            <option value="INACTIVE">INACTIVE (Tạm ngưng)</option>
+          </select>
+        </div>
+
+        <div style="display: flex; gap: 24px; padding: 12px; background: #f8fafc; border-radius: 8px; border: 1px solid #e2e8f0; margin-top: 14px;">
+          <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 13px;">
+            <input type="checkbox" id="cat-show-home" style="width: 16px; height: 16px;">
+            <span>Hiển thị trên Trang chủ (show_on_home)</span>
+          </label>
+          <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 13px;">
+            <input type="checkbox" id="cat-show-menu" style="width: 16px; height: 16px;">
+            <span>Hiển thị trên Menu (show_on_menu)</span>
+          </label>
+        </div>
+
+        <div class="modal-footer" style="padding-left: 0; padding-right: 0; margin-top: 20px;">
+          <button type="button" class="btn btn-outline" onclick="window.DanhMucComponent.closeModal()">Hủy</button>
+          <button type="submit" class="btn btn-primary" id="cat-save-btn">Lưu danh mục</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TDT Shop - Quản Trị Hệ Thống Admin</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+
+  <!-- FontAwesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <!-- Chart.js 4 -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- CSS Hệ thống Admin -->
+  <link rel="stylesheet" href="/css/admin/admin.css" />
+
+  <!-- CSS Các màn hình chức năng Admin -->
+  <link rel="stylesheet" href="/css/admin/tong-quan.css" />
+  <link rel="stylesheet" href="/css/admin/san-pham.css" />
+  <link rel="stylesheet" href="/css/admin/don-hang.css?v=20261012_01" />
+  <link rel="stylesheet" href="/css/admin/danh-muc.css?v=20261012_05" />
+  <link rel="stylesheet" href="/css/admin/thuong-hieu.css?v=20261012_04" />
+  <link rel="stylesheet" href="/css/admin/khach-hang.css?v=20261012_02" />
+  <link rel="stylesheet" href="/css/admin/voucher.css?v=20261012_02" />
+  <link rel="stylesheet" href="/css/admin/build-pc.css" />
+  <link rel="stylesheet" href="/css/admin/thong-ke.css" />
+
+  <style id="critical-admin-layout">
+    /* Critical CSS: Đảm bảo giao diện không bao giờ bị vỡ hoặc chớp nháy khi tải */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: #f8fafc;
+      color: #0f172a;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    .admin-app {
+      display: flex;
+      min-height: 100vh;
+      width: 100%;
+      max-width: 100vw;
+      position: relative;
+    }
+
+    .admin-sidebar {
+      width: 260px;
+      background-color: #0f172a;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 100;
+      overflow-y: auto;
+      box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .sidebar-brand {
+      height: 68px;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      gap: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      white-space: nowrap;
+    }
+
+    .brand-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #008d94 0%, #003b3d 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .brand-title {
+      font-size: 17px;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .brand-subtitle {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: #008d94;
+    }
+
+    .sidebar-menu {
+      list-style: none;
+      padding: 16px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex: 1;
+    }
+
+    .menu-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #94a3b8;
+      padding: 12px 14px 6px;
+      white-space: nowrap;
+    }
+
+    .menu-item {
+      position: relative;
+    }
+
+    .menu-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 11px 14px;
+      color: #94a3b8;
+      text-decoration: none;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .menu-link:hover,
+    .menu-item.active>.menu-link {
+      background-color: #008d94;
+      color: #fff;
+    }
+
+    .submenu {
+      list-style: none;
+      padding-left: 36px;
+      display: none;
+    }
+
+    .has-submenu.open .submenu {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .submenu-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 12px;
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      border-radius: 8px;
+    }
+
+    .submenu-item.active>.submenu-link,
+    .submenu-link:hover {
+      color: #fff;
+      background-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .sidebar-footer {
+      padding: 16px 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .admin-main {
+      margin-left: 260px;
+      width: calc(100% - 260px);
+      max-width: calc(100% - 260px);
+      min-width: 0;
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+
+    .admin-topbar {
+      height: 68px;
+      background-color: #fff;
+      border-bottom: 1px solid #e2e8f0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      position: sticky;
+      top: 0;
+      z-index: 90;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .admin-content {
+      padding: 24px;
+      flex: 1;
+      min-width: 0;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      display: none !important;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-backdrop.show {
+      display: flex !important;
+    }
+
+    .toast-container {
+      position: fixed;
+      top: 24px;
+      right: 24px;
+      z-index: 2000;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    @media (max-width: 992px) {
+      .admin-sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.25s ease;
+      }
+
+      .admin-sidebar.mobile-open {
+        transform: translateX(0);
+      }
+
+      .admin-main {
+        margin-left: 0;
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="admin-app">
+    <!-- =====================================================================
+         1. THANH ĐIỀU HƯỚNG BÊN TRÁI (SIDEBAR)
+         ===================================================================== -->
+    <aside class="admin-sidebar" id="admin-sidebar">
+      <!-- Thương hiệu TDT Shop -->
+      <div class="sidebar-brand">
+        <div class="brand-icon">
+          <i class="fa-solid fa-bolt"></i>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">TDT SHOP</span>
+          <span class="brand-subtitle">Admin Dashboard</span>
+        </div>
+      </div>
+
+      <!-- Danh sách Menu Điều hướng -->
+      <ul class="sidebar-menu">
+        <li class="menu-label">Quản lý tổng quan</li>
+
+        <!-- 1. Tổng quan -->
+        <li class="menu-item active" data-route="tong-quan">
+          <a href="#tong-quan" class="menu-link">
+            <i class="fa-solid fa-chart-pie"></i>
+            <span>Tổng quan</span>
+          </a>
+        </li>
+
+        <!-- 2. Sản phẩm (Có Submenu) -->
+        <li class="menu-item has-submenu" id="menu-product-parent">
+          <a href="javascript:void(0)" class="menu-link" onclick="window.AdminApp.toggleSubmenu('menu-product-parent')">
+            <i class="fa-solid fa-boxes-stacked"></i>
+            <span>Sản phẩm</span>
+            <i class="fa-solid fa-chevron-right menu-arrow"></i>
+          </a>
+          <ul class="submenu">
+            <li class="submenu-item" data-route="san-pham">
+              <a href="#san-pham" class="submenu-link">
+                <i class="fa-solid fa-list-ul"></i> Danh sách sản phẩm
+              </a>
+            </li>
+            <li class="submenu-item" data-route="san-pham-them">
+              <a href="#san-pham-them" class="submenu-link">
+                <i class="fa-solid fa-plus-circle"></i> Thêm sản phẩm
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- 3. Đơn hàng -->
+        <li class="menu-item" data-route="don-hang">
+          <a href="#don-hang" class="menu-link">
+            <i class="fa-solid fa-receipt"></i>
+            <span>Đơn hàng</span>
+            <span class="menu-badge" id="sidebar-pending-badge" style="display: none;">0</span>
+          </a>
+        </li>
+
+        <li class="menu-label">Phân loại & Đối tác</li>
+
+        <!-- 4. Danh mục -->
+        <li class="menu-item" data-route="danh-muc">
+          <a href="#danh-muc" class="menu-link">
+            <i class="fa-solid fa-layer-group"></i>
+            <span>Danh mục</span>
+          </a>
+        </li>
+
+        <!-- 5. Thương hiệu -->
+        <li class="menu-item" data-route="thuong-hieu">
+          <a href="#thuong-hieu" class="menu-link">
+            <i class="fa-solid fa-tags"></i>
+            <span>Thương hiệu</span>
+          </a>
+        </li>
+
+        <li class="menu-label">Khách hàng & Ưu đãi</li>
+
+        <!-- 6. Khách hàng -->
+        <li class="menu-item" data-route="khach-hang">
+          <a href="#khach-hang" class="menu-link">
+            <i class="fa-solid fa-users"></i>
+            <span>Khách hàng</span>
+          </a>
+        </li>
+
+        <!-- 7. Voucher -->
+        <li class="menu-item" data-route="voucher">
+          <a href="#voucher" class="menu-link">
+            <i class="fa-solid fa-ticket"></i>
+            <span>Voucher</span>
+          </a>
+        </li>
+
+        <li class="menu-label">Chuyên biệt PC</li>
+
+        <!-- 8. Build PC -->
+        <li class="menu-item" data-route="build-pc">
+          <a href="#build-pc" class="menu-link">
+            <i class="fa-solid fa-desktop"></i>
+            <span>Build PC</span>
+          </a>
+        </li>
+
+        <!-- 9. Thống kê -->
+        <li class="menu-item" data-route="thong-ke">
+          <a href="#thong-ke" class="menu-link">
+            <i class="fa-solid fa-chart-line"></i>
+            <span>Thống kê</span>
+          </a>
+        </li>
+      </ul>
+
+      <!-- Footer Menu Sidebar: Về trang bán hàng, Đăng xuất -->
+      <div class="sidebar-footer">
+        <a href="/home" class="menu-link" target="_blank" title="Xem giao diện người mua">
+          <i class="fa-solid fa-store"></i>
+          <span>Về trang bán hàng</span>
+        </a>
+        <a href="/login" class="menu-link logout" title="Đăng xuất tài khoản">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <span>Đăng xuất</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- =====================================================================
+         2. KHU VỰC NỘI DUNG CHÍNH (MAIN WRAPPER)
+         ===================================================================== -->
+    <main class="admin-main" id="admin-main">
+      <!-- THANH ĐIỀU HƯỚNG TRÊN (TOPBAR) -->
+      <header class="admin-topbar">
+        <div class="topbar-left">
+          <!-- Nút thu gọn / mở rộng Sidebar -->
+          <button class="sidebar-toggle-btn" id="sidebar-toggle" onclick="window.AdminApp.toggleSidebar()"
+            title="Thu gọn / Mở rộng Menu">
+            <i class="fa-solid fa-bars-staggered"></i>
+          </button>
+
+          <!-- Tên trang hiện tại & Breadcrumb -->
+          <div class="topbar-page-info">
+            <h1 class="topbar-page-title" id="topbar-title">Tổng quan</h1>
+            <span class="topbar-breadcrumb" id="topbar-breadcrumb">Admin / Tổng quan Dashboard</span>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <!-- Nút Reset dữ liệu mô phỏng Demo -->
+          <button class="btn-reset-demo" onclick="window.AdminApp.confirmResetData()"
+            title="Khôi phục lại bộ dữ liệu ban đầu">
+            <i class="fa-solid fa-rotate-left"></i> Khôi phục dữ liệu mẫu
+          </button>
+
+          <!-- Nút Xem Cửa Hàng -->
+          <a href="/home" target="_blank" class="btn-view-shop">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Xem Shop
+          </a>
+
+          <!-- Chuông thông báo -->
+          <div style="position: relative;">
+            <button class="notification-btn" onclick="window.AdminApp.toggleNotificationDropdown()"
+              title="Thông báo hệ thống">
+              <i class="fa-solid fa-bell"></i>
+              <span class="notification-badge" id="topbar-notification-badge" style="display: none;"></span>
+            </button>
+            <!-- Dropdown thông báo -->
+            <div id="notification-dropdown"
+              style="display: none; position: absolute; right: 0; top: 50px; width: 320px; background: #fff; border-radius: 12px; box-shadow: var(--shadow-xl); border: 1px solid var(--border-color); padding: 14px; z-index: 200;">
+              <h5 style="font-size: 13px; font-weight: 700; margin-bottom: 10px; color: #0f172a;">Thông báo mới</h5>
+              <div id="notification-list" style="font-size: 12px; display: flex; flex-direction: column; gap: 8px;">
+                <!-- Render từ admin.js -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Hồ sơ Quản trị viên -->
+          <div class="admin-profile">
+            <div class="admin-avatar">
+              <i class="fa-solid fa-user-shield"></i>
+            </div>
+            <div class="admin-info">
+              <span class="admin-name">Admin Quản Trị</span>
+              <span class="admin-role">Quản trị viên cấp cao</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- KHU VỰC RENDER COMPONENT NỘI DUNG (DYNAMIC CONTAINER) -->
+      <section class="admin-content" id="admin-content-container">
+        <!-- Được nạp tự động qua admin.js -->
+      </section>
+    </main>
+  </div>
+
+  <!-- =====================================================================
+       3. MODAL XÁC NHẬN CHUNG (GLOBAL CONFIRM MODAL)
+       ===================================================================== -->
+  <div class="modal-backdrop" id="global-confirm-modal" style="display: none;">
+    <div class="modal-card" style="max-width: 440px;">
+      <div class="modal-header">
+        <div class="modal-header-title">
+          <i class="fa-solid fa-circle-question text-warning"></i>
+          <span id="confirm-modal-title">Xác nhận thao tác</span>
+        </div>
+        <button class="modal-close-btn" onclick="window.AdminApp.closeConfirmModal()">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="modal-body" id="confirm-modal-message" style="font-size: 14px; color: #334155;">
+        Bạn có chắc chắn muốn thực hiện thao tác này không?
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="window.AdminApp.closeConfirmModal()">Hủy bỏ</button>
+        <button class="btn btn-primary" id="confirm-modal-btn">Xác nhận</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       4. HỘP CHỨA TOAST THÔNG BÁO (GLOBAL TOAST CONTAINER)
+       ===================================================================== -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Nội dung các màn hình con được admin.js tải động từ /pages/admin/*.html -->
+
+  <!-- Cấu hình chung và API Endpoint -->
+  <script src="/js/pages/config.js?v=20261012_01"></script>
+
+  <!-- Gửi và nhận API cho các màn hình Admin -->
+  <script src="/js/pages/admin/san-pham/san-pham.js?v=20261012_01"></script>
+  <script src="/js/pages/admin/thuong-hieu/thuong-hieu.js?v=20261012_03"></script>
+  <script src="/js/pages/admin/khach-hang/khach-hang.js?v=20261012_03"></script>
+  <script src="/js/pages/admin/danh-muc/danh-muc.js?v=20261012_05"></script>
+  <script src="/js/pages/admin/voucher/voucher.js?v=20261012_02"></script>
+  <script src="/js/pages/admin/don-hang/don-hang.js?v=20261012_01"></script>
+  <script src="/js/pages/admin/build-pc/build-pc.js?v=20261012_02"></script>
+
+  <!-- Logic giao diện các màn hình Admin -->
+  <script src="/js/pages/admin/tong-quan/tong-quan-logic.js"></script>
+  <script src="/js/pages/admin/san-pham/san-pham-logic.js?v=20261012_01"></script>
+  <script src="/js/pages/admin/don-hang/don-hang-logic.js?v=20261012_02"></script>
+  <script src="/js/pages/admin/danh-muc/danh-muc-logic.js?v=20261012_12"></script>
+  <script src="/js/pages/admin/thuong-hieu/thuong-hieu-logic.js?v=20261012_06"></script>
+  <script src="/js/pages/admin/khach-hang/khach-hang-logic.js?v=20261012_04"></script>
+  <script src="/js/pages/admin/voucher/voucher-logic.js?v=20261012_02"></script>
+  <script src="/js/pages/admin/build-pc/build-pc-logic.js?v=20261012_02"></script>
+  <script src="/js/pages/admin/thong-ke/thong-ke-logic.js"></script>
+
+  <!-- Quản lý chuyển trang giữa 9 màn Admin -->
+  <script src="/js/pages/admin/admin.js?v=20261012_04"></script>
+</body>
+
+</html>

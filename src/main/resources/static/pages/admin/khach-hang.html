@@ -1,0 +1,92 @@
+<!-- =========================================================================
+     khach-hang.html - Giao diện Quản lý Khách hàng TDT Shop
+     Bao gồm: Bảng khách hàng, khóa/mở tài khoản, modal xem thông tin và địa chỉ
+     giao hàng (user_addresses) tuân thủ schema.sql (không hiển thị mật khẩu)
+     ========================================================================= -->
+
+<div class="customers-container">
+  <div class="admin-card">
+    <div class="card-header">
+      <div class="card-title">
+        <i class="fa-solid fa-users text-primary"></i>
+        Quản lý tài khoản khách hàng
+      </div>
+    </div>
+
+    <!-- TÌM KIẾM VÀ LỌC KHÁCH HÀNG -->
+    <div class="filter-bar">
+      <div class="search-input-wrap">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="cust-search-input" class="form-control"
+          placeholder="Tìm theo Username, Họ tên, Email, Số điện thoại..."
+          oninput="window.KhachHangComponent.onSearch(this.value)">
+      </div>
+
+      <div class="filter-item">
+        <select id="cust-filter-status" class="form-control"
+          onchange="window.KhachHangComponent.onStatusFilterChange(this.value)">
+          <option value="">Tất cả trạng thái</option>
+          <option value="true">Đang hoạt động</option>
+          <option value="false">Đã khóa</option>
+        </select>
+      </div>
+
+      <!-- Nút làm mới bộ lọc -->
+      <button class="btn btn-outline" onclick="window.KhachHangComponent.resetFilter()" title="Làm mới bộ lọc">
+        <i class="fa-solid fa-rotate-left"></i> Đặt lại
+      </button>
+    </div>
+
+    <!-- BẢNG KHÁCH HÀNG -->
+    <div class="customer-table-scroll-container table-responsive">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th style="width: 70px;">ID</th>
+            <th>Tên đăng nhập</th>
+            <th>Họ và tên</th>
+            <th>Email</th>
+            <th>Số điện thoại</th>
+            <th>Ngày đăng ký</th>
+            <th>Trạng thái</th>
+            <th style="text-align: right; width: 110px;">Thao tác</th>
+          </tr>
+        </thead>
+        <tbody id="customer-table-body">
+          <!-- Render từ khach-hang.js -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- PHÂN TRANG -->
+    <div class="pagination-wrap" id="customer-pagination-container">
+      <div class="pagination-info" id="customer-pagination-info">Đang tải dữ liệu...</div>
+      <div class="pagination-controls" id="customer-pagination-controls"></div>
+    </div>
+  </div>
+</div>
+
+<!-- =========================================================================
+     MODAL XEM CHI TIẾT TÀI KHOẢN KHÁCH HÀNG
+     ========================================================================= -->
+<div class="modal-backdrop" id="customer-detail-modal">
+  <div class="modal-card">
+    <div class="modal-header">
+      <div class="modal-header-title">
+        <i class="fa-solid fa-user-circle text-primary"></i>
+        <span>Chi tiết tài khoản khách hàng</span>
+      </div>
+      <button class="modal-close-btn" onclick="window.KhachHangComponent.closeDetailModal()">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div class="modal-body" id="customer-detail-content">
+      <!-- Render từ khach-hang.js -->
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="window.KhachHangComponent.closeDetailModal()">Đóng</button>
+    </div>
+  </div>
+</div>

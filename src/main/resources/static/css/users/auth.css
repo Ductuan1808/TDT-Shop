@@ -1,0 +1,1033 @@
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  font-family: Inter, Arial, Helvetica, sans-serif;
+
+  color: #111;
+
+  background: #f5f5f5;
+}
+
+button,
+input {
+  font-family: inherit;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* =====================================================
+   MAIN
+===================================================== */
+
+.auth-page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1.05fr)
+    minmax(0, 0.95fr);
+  width: 100%;
+}
+
+/* =====================================================
+   LEFT SHOWCASE
+===================================================== */
+
+.auth-showcase {
+  position: relative;
+
+  min-height: 100vh;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(135deg, rgba(3, 29, 32, 0.98), rgba(7, 45, 49, 0.88)),
+    url("https://images.unsplash.com/photo-1587202372634-32705e3bf49c?auto=format&fit=crop&w=1800&q=85");
+
+  background-size: cover;
+
+  background-position: center;
+
+  color: white;
+}
+
+.auth-showcase::before {
+  content: "";
+
+  position: absolute;
+
+  width: 500px;
+  height: 500px;
+
+  border-radius: 50%;
+
+  background: radial-gradient(circle, rgba(225, 11, 5, 0.25), transparent 65%);
+
+  top: 25%;
+  right: -180px;
+}
+
+.auth-showcase::after {
+  content: "";
+
+  position: absolute;
+
+  width: 350px;
+  height: 350px;
+
+  border-radius: 50%;
+
+  background: radial-gradient(circle, rgba(38, 62, 143, 0.3), transparent 70%);
+
+  bottom: -120px;
+  left: -100px;
+}
+
+.showcase-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  background: linear-gradient(
+    90deg,
+    rgba(4, 29, 32, 0.96),
+    rgba(4, 29, 32, 0.65)
+  );
+}
+
+/* =====================================================
+   SHOWCASE CONTENT
+===================================================== */
+
+.showcase-content {
+  position: relative;
+
+  z-index: 2;
+
+  min-height: 100vh;
+
+  padding: 45px 55px 35px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: space-between;
+}
+
+/* =====================================================
+   BRAND
+===================================================== */
+
+.brand {
+  display: flex;
+
+  align-items: center;
+
+  gap: 13px;
+}
+
+.brand-mark {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  background: #e10b05;
+
+  color: white;
+
+  font-weight: 900;
+
+  font-size: 15px;
+
+  letter-spacing: -1px;
+}
+
+.brand strong {
+  display: block;
+
+  font-size: 19px;
+
+  letter-spacing: 1px;
+}
+
+.brand span {
+  display: block;
+
+  margin-top: 3px;
+
+  font-size: 8px;
+
+  letter-spacing: 2px;
+
+  color: #aebcbd;
+}
+
+/* =====================================================
+   SHOWCASE TEXT
+===================================================== */
+
+.showcase-text {
+  max-width: 570px;
+}
+
+.eyebrow {
+  display: inline-block;
+
+  margin-bottom: 20px;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 3px;
+
+  color: #c7d2d2;
+}
+
+.showcase-text h1 {
+  font-size: clamp(50px, 5vw, 76px);
+
+  line-height: 0.96;
+
+  letter-spacing: -4px;
+
+  font-weight: 800;
+
+  margin-bottom: 28px;
+}
+
+.showcase-text h1 span {
+  display: block;
+
+  color: #e10b05;
+}
+
+.showcase-text > p {
+  max-width: 480px;
+
+  color: #c7d0d0;
+
+  line-height: 1.7;
+
+  font-size: 15px;
+}
+
+.showcase-line {
+  width: 65px;
+
+  height: 3px;
+
+  background: #e10b05;
+
+  margin: 30px 0 25px;
+}
+
+/* =====================================================
+   FEATURES
+===================================================== */
+
+.showcase-features {
+  display: flex;
+
+  gap: 35px;
+}
+
+.showcase-features div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 6px;
+}
+
+.showcase-features strong {
+  font-size: 12px;
+
+  color: #e10b05;
+}
+
+.showcase-features span {
+  font-size: 12px;
+
+  color: #d8dddd;
+}
+
+/* =====================================================
+   REGISTER POINTS
+===================================================== */
+
+.register-points {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 18px;
+}
+
+.register-points > div {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 18px;
+}
+
+.point-number {
+  font-size: 11px;
+
+  color: #e10b05;
+
+  font-weight: 700;
+
+  padding-top: 2px;
+}
+
+.register-points strong {
+  display: block;
+
+  font-size: 14px;
+
+  margin-bottom: 4px;
+}
+
+.register-points p {
+  color: #aebbbb;
+
+  font-size: 12px;
+}
+
+/* =====================================================
+   SHOWCASE FOOTER
+===================================================== */
+
+.showcase-footer {
+  display: flex;
+
+  justify-content: space-between;
+
+  color: #7f9192;
+
+  font-size: 9px;
+
+  letter-spacing: 1.5px;
+}
+
+/* =====================================================
+   RIGHT FORM
+===================================================== */
+
+.auth-form-side {
+  min-height: 100vh;
+
+  background: #f5f5f5;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+}
+
+.auth-form-container {
+  width: 100%;
+
+  max-width: 470px;
+
+  padding: 50px 45px;
+}
+
+/* =====================================================
+   FORM HEADING
+===================================================== */
+
+.small-heading {
+  display: block;
+
+  color: #263e8f;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 3px;
+
+  margin-bottom: 10px;
+}
+
+.form-heading h2 {
+  font-size: 38px;
+
+  letter-spacing: -1.5px;
+
+  margin-bottom: 10px;
+}
+
+.form-heading p {
+  color: #777;
+
+  font-size: 14px;
+
+  line-height: 1.6;
+
+  margin-bottom: 32px;
+}
+
+/* =====================================================
+   INPUT
+===================================================== */
+
+.input-group {
+  margin-bottom: 18px;
+}
+
+.input-group label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  font-size: 13px;
+
+  font-weight: 600;
+}
+
+.input-group label span {
+  color: #e10b05;
+}
+
+.label-row {
+  display: flex;
+
+  justify-content: space-between;
+}
+
+.label-row a {
+  font-size: 12px;
+
+  color: #263e8f;
+}
+
+.input-wrapper {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+
+  left: 15px;
+
+  z-index: 2;
+
+  color: #7a8587;
+
+  font-weight: 700;
+}
+
+.input-wrapper input {
+  width: 100%;
+
+  height: 48px;
+
+  border: 1px solid #d5d8d8;
+
+  background: white;
+
+  border-radius: 4px;
+
+  outline: none;
+
+  padding: 0 60px 0 40px;
+
+  font-size: 14px;
+
+  transition: 0.2s;
+}
+
+.input-wrapper input::placeholder {
+  color: #aaa;
+}
+
+.input-wrapper input:focus {
+  border-color: #263e8f;
+
+  box-shadow: 0 0 0 3px rgba(38, 62, 143, 0.08);
+}
+
+/* =====================================================
+   PASSWORD BUTTON
+===================================================== */
+
+.password-toggle {
+  position: absolute;
+
+  right: 12px;
+
+  border: none;
+
+  background: transparent;
+
+  color: #263e8f;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+/* =====================================================
+   REMEMBER
+===================================================== */
+
+.remember-row {
+  margin: 5px 0 22px;
+}
+
+.checkbox-label {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 8px;
+
+  font-size: 12px;
+
+  color: #555;
+
+  cursor: pointer;
+}
+
+.checkbox-label input {
+  accent-color: #263e8f;
+
+  margin-top: 2px;
+}
+
+.checkbox-label a {
+  color: #263e8f;
+
+  font-weight: 600;
+}
+
+/* =====================================================
+   MAIN BUTTON
+===================================================== */
+
+.main-button {
+  width: 100%;
+
+  height: 52px;
+
+  border: none;
+
+  border-radius: 4px;
+
+  background: #062c30;
+
+  color: white;
+
+  font-size: 13px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.5px;
+
+  cursor: pointer;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 20px;
+
+  transition: 0.25s;
+}
+
+.main-button span {
+  font-size: 20px;
+
+  transition: 0.25s;
+}
+
+.main-button:hover {
+  background: #e10b05;
+}
+
+.main-button:hover span {
+  transform: translateX(5px);
+}
+
+/* =====================================================
+   DIVIDER
+===================================================== */
+
+.divider {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin: 25px 0;
+}
+
+.divider span {
+  height: 1px;
+
+  background: #ddd;
+
+  flex: 1;
+}
+
+.divider p {
+  color: #999;
+
+  font-size: 9px;
+
+  letter-spacing: 2px;
+}
+
+/* =====================================================
+   REGISTER BOX
+===================================================== */
+
+.register-box {
+  text-align: center;
+
+  font-size: 13px;
+
+  color: #777;
+}
+
+.register-box a {
+  margin-left: 5px;
+
+  color: #e10b05;
+
+  font-weight: 700;
+}
+
+.register-box a:hover {
+  text-decoration: underline;
+}
+
+/* =====================================================
+   BOTTOM
+===================================================== */
+
+.form-bottom {
+  display: flex;
+
+  justify-content: space-between;
+
+  margin-top: 45px;
+
+  padding-top: 18px;
+
+  border-top: 1px solid #ddd;
+
+  color: #aaa;
+
+  font-size: 9px;
+
+  letter-spacing: 1.5px;
+}
+
+/* =====================================================
+   REGISTER FORM
+===================================================== */
+
+.register-container {
+  max-width: 500px;
+}
+
+.register-container .form-heading p {
+  margin-bottom: 25px;
+}
+
+.terms-row {
+  margin: 8px 0 20px;
+}
+
+/* =====================================================
+   MOBILE BRAND
+===================================================== */
+
+.mobile-brand {
+  display: none;
+
+  font-weight: 900;
+
+  font-size: 20px;
+
+  color: #062c30;
+
+  margin-bottom: 30px;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 1000px) {
+  .auth-page {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-showcase {
+    display: none;
+  }
+
+  .auth-form-side {
+    min-height: 100vh;
+  }
+
+  .mobile-brand {
+    display: block;
+  }
+}
+
+@media (max-width: 550px) {
+  .auth-form-container {
+    padding: 30px 20px;
+  }
+
+  .form-heading h2 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 380px) {
+  .auth-form-container {
+    padding: 20px 14px;
+  }
+
+  .form-heading h2 {
+    font-size: 24px;
+  }
+}
+
+/* =====================================================
+   REGISTER STATUS MODAL
+===================================================== */
+
+.status-modal {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 9999;
+
+  display: none;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+.status-modal.active {
+  display: flex;
+}
+
+/* ================= OVERLAY ================= */
+
+.status-modal-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  background: rgba(3, 20, 22, 0.72);
+
+  backdrop-filter: blur(7px);
+}
+
+/* ================= MODAL ================= */
+
+.status-modal-content {
+  position: relative;
+
+  z-index: 2;
+
+  width: 430px;
+
+  max-width: calc(100% - 40px);
+
+  background: #fff;
+
+  border-radius: 8px;
+
+  padding: 45px 40px;
+
+  text-align: center;
+
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+
+  animation: statusModalShow 0.3s ease;
+}
+
+@keyframes statusModalShow {
+  from {
+    opacity: 0;
+
+    transform: translateY(20px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ================= STATE ================= */
+
+.status-state {
+  display: none;
+}
+
+.status-state.active {
+  display: block;
+}
+
+/* ================= LABEL ================= */
+
+.status-label {
+  display: block;
+
+  margin-top: 18px;
+
+  margin-bottom: 10px;
+
+  color: #263e8f;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 3px;
+}
+
+/* ================= TITLE ================= */
+
+.status-state h3 {
+  font-size: 23px;
+
+  color: #111;
+
+  margin-bottom: 12px;
+}
+
+.status-state p {
+  color: #777;
+
+  font-size: 13px;
+
+  line-height: 1.7;
+}
+
+/* ================= LOADING ================= */
+
+.loading-circle {
+  width: 58px;
+
+  height: 58px;
+
+  margin: 0 auto;
+
+  border-radius: 50%;
+
+  border: 4px solid #e5e7e7;
+
+  border-top-color: #263e8f;
+
+  animation: loadingSpin 0.8s linear infinite;
+}
+
+@keyframes loadingSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-bar {
+  width: 100%;
+
+  height: 3px;
+
+  margin-top: 25px;
+
+  background: #e5e5e5;
+
+  overflow: hidden;
+}
+
+.loading-bar span {
+  display: block;
+
+  width: 40%;
+
+  height: 100%;
+
+  background: #e10b05;
+
+  animation: loadingBar 1.2s ease-in-out infinite;
+}
+
+@keyframes loadingBar {
+  0% {
+    transform: translateX(-120%);
+  }
+
+  100% {
+    transform: translateX(350%);
+  }
+}
+
+/* ================= SUCCESS ================= */
+
+.success-icon {
+  width: 68px;
+
+  height: 68px;
+
+  margin: 0 auto;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #062c30;
+
+  color: #fff;
+
+  font-size: 32px;
+
+  font-weight: 700;
+
+  animation: successShow 0.4s ease;
+}
+
+@keyframes successShow {
+  from {
+    transform: scale(0.5);
+
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+
+    opacity: 1;
+  }
+}
+
+/* ================= COUNTDOWN ================= */
+
+.redirect-text {
+  margin-top: 20px;
+
+  color: #999;
+
+  font-size: 12px;
+}
+
+.redirect-text span {
+  color: #e10b05;
+
+  font-weight: 800;
+}
+
+/* ================= BUTTON ================= */
+
+.status-button {
+  width: 100%;
+
+  height: 48px;
+
+  margin-top: 25px;
+
+  border: none;
+
+  border-radius: 4px;
+
+  background: #062c30;
+
+  color: #fff;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  letter-spacing: 1px;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.status-button:hover {
+  background: #e10b05;
+}
+
+/* ================= ERROR ================= */
+
+.error-icon {
+  width: 68px;
+
+  height: 68px;
+
+  margin: 0 auto;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #e10b05;
+
+  color: white;
+
+  font-size: 38px;
+
+  font-weight: 400;
+}
+
+.error-button {
+  background: #263e8f;
+}
+
+.error-button:hover {
+  background: #062c30;
+}

@@ -1,0 +1,141 @@
+<!-- =========================================================================
+     voucher.html - Giao diện Quản lý Voucher TDT Shop
+     Bao gồm: Bảng danh sách mã giảm giá, kiểm tra ràng buộc mã duy nhất,
+     ngày kết thúc > ngày bắt đầu, mức giảm > 0 theo đúng schema.sql
+     ========================================================================= -->
+
+<div class="vouchers-container">
+  <div class="admin-card">
+    <div class="card-header">
+      <div class="card-title">
+        <i class="fa-solid fa-ticket text-primary"></i>
+        Quản lý mã giảm giá (Vouchers)
+      </div>
+      <button class="btn btn-primary" onclick="window.VoucherComponent.openAddModal()">
+        <i class="fa-solid fa-plus"></i> Tạo Voucher mới
+      </button>
+    </div>
+
+    <!-- TÌM KIẾM VÀ LỌC -->
+    <div class="filter-bar">
+      <div class="search-input-wrap">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="voucher-search-input" class="form-control" placeholder="Tìm theo Mã code hoặc Tên voucher..." oninput="window.VoucherComponent.onSearch(this.value)">
+      </div>
+
+      <div class="filter-item">
+        <select id="voucher-filter-status" class="form-control" onchange="window.VoucherComponent.onStatusFilterChange(this.value)">
+          <option value="">Tất cả trạng thái</option>
+          <!-- Tải động từ CSDL qua VoucherComponent.fetchStatuses() -->
+        </select>
+      </div>
+
+      <!-- Nút làm mới bộ lọc -->
+      <button class="btn btn-outline" onclick="window.VoucherComponent.resetFilter()" title="Làm mới bộ lọc">
+        <i class="fa-solid fa-rotate-left"></i> Đặt lại
+      </button>
+    </div>
+
+    <!-- BẢNG DANH SÁCH VOUCHER -->
+    <div class="table-responsive">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th style="width: 70px;">ID</th>
+            <th>Mã Voucher</th>
+            <th>Tên chương trình</th>
+            <th>Mức giảm giá</th>
+            <th>Đơn tối thiểu</th>
+            <th>Thời gian hiệu lực</th>
+            <th style="text-align: center;">Số lượng</th>
+            <th>Trạng thái</th>
+            <th style="text-align: right; width: 100px;">Thao tác</th>
+          </tr>
+        </thead>
+        <tbody id="voucher-table-body">
+          <!-- Render từ voucher.js -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- PHÂN TRANG -->
+    <div class="pagination-wrap" id="voucher-pagination-container">
+      <div class="pagination-info" id="voucher-pagination-info">Đang tải dữ liệu...</div>
+      <div class="pagination-controls" id="voucher-pagination-controls"></div>
+    </div>
+  </div>
+</div>
+
+<!-- =========================================================================
+     MODAL THÊM / SỬA VOUCHER
+     ========================================================================= -->
+<div class="modal-backdrop" id="voucher-modal">
+  <div class="modal-card">
+    <div class="modal-header">
+      <div class="modal-header-title">
+        <i class="fa-solid fa-ticket-simple text-primary"></i>
+        <span id="voucher-modal-title">Tạo Voucher mới</span>
+      </div>
+      <button class="modal-close-btn" onclick="window.VoucherComponent.closeModal()">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <form id="voucher-form" onsubmit="window.VoucherComponent.handleSave(event)">
+        <input type="hidden" id="voucher-id">
+
+        <div class="form-group">
+          <label class="form-label required">Mã Voucher (code)</label>
+          <input type="text" id="voucher-code" class="form-control" style="text-transform: uppercase;" required placeholder="Ví dụ: TDTNEWPC">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label required">Tên chương trình (name)</label>
+          <input type="text" id="voucher-name" class="form-control" required placeholder="Ví dụ: Giảm 1.000.000₫ cho dàn PC Gaming">
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label required">Mức giảm giá (VNĐ) (> 0)</label>
+            <input type="number" id="voucher-discount" class="form-control" min="1000" step="1000" required placeholder="100000">
+          </div>
+          <div class="form-group">
+            <label class="form-label required">Đơn tối thiểu (VNĐ)</label>
+            <input type="number" id="voucher-min-order" class="form-control" min="0" step="1000" value="0" required placeholder="0">
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label required">Ngày bắt đầu (start_date)</label>
+            <input type="datetime-local" id="voucher-start" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label required">Ngày kết thúc (end_date)</label>
+            <input type="datetime-local" id="voucher-end" class="form-control" required>
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label required">Số lượng phát hành</label>
+            <input type="number" id="voucher-quantity" class="form-control" min="0" value="50" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label required">Trạng thái kích hoạt</label>
+            <select id="voucher-status" class="form-control" required>
+              <option value="true">Đang kích hoạt</option>
+              <option value="false">Tạm tắt</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="modal-footer" style="padding-left: 0; padding-right: 0; margin-top: 20px;">
+          <button type="button" class="btn btn-outline" onclick="window.VoucherComponent.closeModal()">Hủy</button>
+          <button type="submit" class="btn btn-primary">Lưu Voucher</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

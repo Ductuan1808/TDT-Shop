@@ -1,0 +1,135 @@
+<!-- =========================================================================
+     thong-ke.html - Giao diện Thống kê Báo cáo TDT Shop
+     Bao gồm: Bộ lọc thời gian, thẻ chỉ số doanh thu/đơn/sản phẩm đã bán,
+     biểu đồ doanh thu Chart.js, biểu đồ tỷ lệ nhóm sản phẩm và bảng xếp hạng
+     ========================================================================= -->
+
+<div class="statistics-container">
+  <!-- BỘ LỌC KHOẢNG THỜI GIAN -->
+  <div class="admin-card">
+    <div class="card-header">
+      <div class="card-title">
+        <i class="fa-solid fa-chart-simple text-primary"></i>
+        Báo cáo & Thống kê kinh doanh
+      </div>
+      <div class="time-filter-buttons">
+        <button class="btn btn-outline btn-sm" id="btn-stats-today" onclick="window.ThongKeComponent.setTimeFilter('today')">Hôm nay</button>
+        <button class="btn btn-outline btn-sm" id="btn-stats-week" onclick="window.ThongKeComponent.setTimeFilter('week')">7 ngày qua</button>
+        <button class="btn btn-outline btn-sm active" id="btn-stats-month" onclick="window.ThongKeComponent.setTimeFilter('month')">Tháng này</button>
+        <button class="btn btn-outline btn-sm" id="btn-stats-year" onclick="window.ThongKeComponent.setTimeFilter('year')">Năm nay</button>
+        <button class="btn btn-outline btn-sm" id="btn-stats-custom" onclick="window.ThongKeComponent.setTimeFilter('custom')"><i class="fa-regular fa-calendar-days"></i> Tùy chọn ngày</button>
+      </div>
+    </div>
+
+    <!-- Khối chọn khoảng ngày tùy chỉnh -->
+    <div class="custom-date-range-bar" id="stats-custom-date-bar" style="display: none; margin-bottom: 20px;">
+      <div class="date-input-group">
+        <label><i class="fa-regular fa-calendar"></i> Từ ngày:</label>
+        <input type="date" id="stats-date-from" value="2025-02-01">
+      </div>
+      <div class="date-input-group">
+        <label><i class="fa-regular fa-calendar"></i> Đến ngày:</label>
+        <input type="date" id="stats-date-to" value="2025-03-31">
+      </div>
+      <button class="btn btn-primary btn-sm" id="btn-stats-apply-custom" onclick="window.ThongKeComponent.applyCustomDateRange()">
+        <i class="fa-solid fa-filter"></i> Lọc dữ liệu
+      </button>
+      <span class="custom-date-hint" id="stats-custom-date-hint"></span>
+    </div>
+
+    <!-- HÀNG THẺ CHỈ SỐ -->
+    <div class="kpi-grid">
+      <div class="kpi-card revenue-card">
+        <div class="kpi-icon-box"><i class="fa-solid fa-coins"></i></div>
+        <div class="kpi-info">
+          <span class="kpi-title">Doanh thu thực tế</span>
+          <h3 class="kpi-value" id="stats-total-revenue">0 ₫</h3>
+          <span class="kpi-subtext"><i class="fa-solid fa-arrow-trend-up text-success"></i> Từ các đơn đã giao thành công</span>
+        </div>
+      </div>
+
+      <div class="kpi-card orders-card">
+        <div class="kpi-icon-box"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+        <div class="kpi-info">
+          <span class="kpi-title">Tổng số đơn hoàn thành</span>
+          <h3 class="kpi-value" id="stats-completed-orders">0</h3>
+          <span class="kpi-subtext" id="stats-orders-sub">Đơn giao thành công</span>
+        </div>
+      </div>
+
+      <div class="kpi-card products-card">
+        <div class="kpi-icon-box"><i class="fa-solid fa-cart-flatbed"></i></div>
+        <div class="kpi-info">
+          <span class="kpi-title">Sản phẩm đã bán</span>
+          <h3 class="kpi-value" id="stats-sold-items">0</h3>
+          <span class="kpi-subtext">Tổng số lượng linh kiện/PC</span>
+        </div>
+      </div>
+
+      <div class="kpi-card customers-card">
+        <div class="kpi-icon-box"><i class="fa-solid fa-scale-balanced"></i></div>
+        <div class="kpi-info">
+          <span class="kpi-title">Giá trị trung bình / đơn (AOV)</span>
+          <h3 class="kpi-value" id="stats-avg-order-value">0 ₫</h3>
+          <span class="kpi-subtext">Doanh thu / số đơn đã giao</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HÀNG BIỂU ĐỒ THỐNG KÊ CHI TIẾT -->
+  <div class="charts-row">
+    <!-- Biểu đồ doanh thu theo thời gian -->
+    <div class="admin-card chart-card">
+      <div class="card-header">
+        <div class="card-title">
+          <i class="fa-solid fa-chart-column"></i>
+          Doanh thu theo mốc thời gian
+        </div>
+      </div>
+      <div class="chart-canvas-wrap">
+        <canvas id="statsRevenueChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Biểu đồ phân bổ nhóm sản phẩm -->
+    <div class="admin-card chart-card">
+      <div class="card-header">
+        <div class="card-title">
+          <i class="fa-solid fa-chart-pie"></i>
+          Cơ cấu doanh thu theo nhóm sản phẩm
+        </div>
+      </div>
+      <div class="chart-canvas-wrap doughnut-wrap">
+        <canvas id="statsCategoryChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- BẢNG BÁO CÁO DOANH SỐ TỪNG SẢN PHẨM -->
+  <div class="admin-card">
+    <div class="card-header">
+      <div class="card-title">
+        <i class="fa-solid fa-ranking-star text-warning"></i>
+        Bảng xếp hạng hiệu quả kinh doanh từng sản phẩm
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th style="width: 50px;">Hạng</th>
+            <th>Sản phẩm</th>
+            <th>Mã SKU</th>
+            <th>Số lượng bán</th>
+            <th>Đơn giá trung bình</th>
+            <th style="text-align: right;">Tổng doanh thu</th>
+          </tr>
+        </thead>
+        <tbody id="stats-products-table-body">
+          <!-- Render từ thong-ke.js -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tài khoản | TTGShop</title>
+  <link rel="stylesheet" href="/css/components/header.css" />
+  <link rel="stylesheet" href="/css/user.css" />
+  <link rel="stylesheet" href="/css/components/footer.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  />
+</head>
+<body>
+  <!-- Header (giữ nguyên không sửa đổi) -->
+  <div id="header"></div>
+
+  <div class="user-page-wrapper">
+    <!-- Breadcrumb -->
+    <div class="breadcrumb-container">
+      <div class="breadcrumb">
+        <a href="/home">Trang chủ</a>
+        <span class="sep">&gt;</span>
+        <span class="current">Tài khoản</span>
+      </div>
+    </div>
+
+    <!-- Main Section: Sidebar + Content -->
+    <div class="account-section">
+      <!-- Sidebar tài khoản -->
+      <aside class="account-sidebar">
+        <div class="account-title">
+          <div class="account-avatar">
+            <i class="fa-solid fa-user"></i>
+          </div>
+
+          <div>
+            <div class="account-label">Tài khoản</div>
+            <div class="account-name" id="sidebarUserName">Tuấn Đức</div>
+          </div>
+        </div>
+
+        <nav class="account-menu">
+          <a href="?view=change-info" class="account-menu-item active" data-tab="profile" id="menuItemProfile">
+            <span class="menu-icon"><i class="fa-regular fa-user"></i></span>
+            <span>Thông tin tài khoản</span>
+          </a>
+
+          <a href="?view=order" class="account-menu-item" data-tab="orders" id="menuItemOrders">
+            <span class="menu-icon"><i class="fa-regular fa-file-lines"></i></span>
+            <span>Quản lý đơn hàng</span>
+          </a>
+
+          <a href="?view=change-pass" class="account-menu-item" data-tab="password" id="menuItemPassword">
+            <span class="menu-icon"><i class="fa-solid fa-lock"></i></span>
+            <span>Thay đổi mật khẩu</span>
+          </a>
+
+          <a href="javascript:void(0)" class="account-menu-item" id="sidebarLogoutBtn">
+            <span class="menu-icon"><i class="fa-solid fa-power-off"></i></span>
+            <span>Đăng xuất</span>
+          </a>
+        </nav>
+      </aside>
+
+      <!-- Nội dung chính bên phải -->
+      <main class="account-content">
+        <!-- ================= TAB 1: THÔNG TIN TÀI KHOẢN ================= -->
+        <section class="tab-panel active" id="tab-profile">
+          <h1>Cập nhật thông tin cá nhân</h1>
+
+          <form class="account-form" id="profileForm">
+            <div class="account-form-row">
+              <label for="fullName">Họ tên</label>
+              <input id="fullName" name="fullName" type="text" value="Tuấn Đức" required />
+            </div>
+
+            <div class="account-form-row">
+              <label for="email">Email</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                value="duc846084@gmail.com"
+                required
+              />
+            </div>
+
+            <div class="account-form-row">
+              <label for="address">Địa chỉ nhà</label>
+              <input
+                id="address"
+                name="address"
+                type="text"
+                value="Chung cư new house xala"
+                required
+              />
+            </div>
+
+            <div class="account-form-row">
+              <label for="province">Tỉnh/Thành Phố</label>
+              <div class="account-select-wrapper">
+                <select id="province" name="province">
+                  <option value="">Chọn Tỉnh / Thành Phố</option>
+                  <option value="hanoi" selected>Hà Nội</option>
+                  <option value="hcm">Hồ Chí Minh</option>
+                  <option value="danang">Đà Nẵng</option>
+                  <option value="haiphong">Hải Phòng</option>
+                  <option value="cantho">Cần Thơ</option>
+                  <option value="binhduong">Bình Dương</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="account-form-row">
+              <label for="landline">Điện thoại cố định</label>
+              <input
+                id="landline"
+                name="landline"
+                type="text"
+                value="0986180804"
+              />
+            </div>
+
+            <div class="account-form-row">
+              <label for="mobile">Điện thoại di động</label>
+              <input id="mobile" name="mobile" type="text" value="0986180804" required />
+            </div>
+
+            <div class="account-button-row">
+              <button type="submit">THAY ĐỔI</button>
+            </div>
+          </form>
+        </section>
+
+        <!-- ================= TAB 2: QUẢN LÝ ĐƠN HÀNG ================= -->
+        <section class="tab-panel" id="tab-orders">
+          <h1>Đơn hàng của tôi</h1>
+
+          <!-- Tabs lọc trạng thái đơn hàng -->
+          <div class="order-status-tabs">
+            <button type="button" class="order-tab-btn active" data-status="all">
+              Tất cả <span class="order-count" id="count-all">(4)</span>
+            </button>
+            <button type="button" class="order-tab-btn" data-status="pending">
+              Chờ xác nhận <span class="order-count" id="count-pending">(1)</span>
+            </button>
+            <button type="button" class="order-tab-btn" data-status="preparing">
+              Đang chuẩn bị hàng <span class="order-count" id="count-preparing">(1)</span>
+            </button>
+            <button type="button" class="order-tab-btn" data-status="shipping">
+              Đang giao hàng <span class="order-count" id="count-shipping">(1)</span>
+            </button>
+            <button type="button" class="order-tab-btn" data-status="completed">
+              Đã giao hàng <span class="order-count" id="count-completed">(1)</span>
+            </button>
+          </div>
+
+          <!-- Danh sách Order Cards -->
+          <div class="order-cards-list" id="orderCardsList">
+            <!-- Render động bằng user.js -->
+          </div>
+
+          <!-- Phân trang đơn hàng -->
+          <div class="order-pagination" id="orderPagination"></div>
+
+          <!-- Trạng thái trống (khi không có đơn nào) -->
+          <div class="order-empty" id="orderEmpty" style="display: none;">
+            <div class="empty-icon"><i class="fa-solid fa-box-open"></i></div>
+            <p class="empty-text">Bạn chưa mua đơn hàng nào!</p>
+            <a href="/products" class="empty-action-btn">Tiếp tục mua sắm</a>
+          </div>
+        </section>
+
+        <!-- ================= TAB 3: THAY ĐỔI MẬT KHẨU ================= -->
+        <section class="tab-panel" id="tab-password">
+          <h1>Thay đổi mật khẩu</h1>
+
+          <form class="account-form" id="changePasswordForm">
+            <div class="account-form-row">
+              <label for="oldPassword">Mật khẩu cũ</label>
+              <div class="password-input-wrap">
+                <input
+                  id="oldPassword"
+                  name="oldPassword"
+                  type="password"
+                  placeholder="Nhập mật khẩu cũ"
+                  required
+                />
+                <button type="button" class="toggle-pwd-btn" onclick="toggleUserPassword('oldPassword', this)">
+                  <i class="fa-regular fa-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="account-form-row">
+              <label for="newPassword">Mật khẩu mới</label>
+              <div class="password-input-wrap">
+                <input
+                  id="newPassword"
+                  name="newPassword"
+                  type="password"
+                  placeholder="Nhập mật khẩu mới"
+                  required
+                />
+                <button type="button" class="toggle-pwd-btn" onclick="toggleUserPassword('newPassword', this)">
+                  <i class="fa-regular fa-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="account-form-row">
+              <label for="confirmPassword">Nhập lại</label>
+              <div class="password-input-wrap">
+                <input
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  type="password"
+                  placeholder="Nhập lại mật khẩu mới"
+                  required
+                />
+                <button type="button" class="toggle-pwd-btn" onclick="toggleUserPassword('confirmPassword', this)">
+                  <i class="fa-regular fa-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="account-button-row">
+              <button type="submit">CẬP NHẬT</button>
+            </div>
+          </form>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- ================= MODAL XÁC NHẬN ĐĂNG XUẤT ================= -->
+  <!-- Thiết kế chuẩn theo ảnh 4: vòng tròn đỏ chấm hỏi, Tiêu đề Xác nhận, 2 nút Có và Không -->
+  <div class="user-modal-overlay" id="logoutModal" style="display: none;">
+    <div class="logout-modal-box">
+      <div class="logout-modal-icon">
+        <span>?</span>
+      </div>
+      <h3 class="logout-modal-title">Xác nhận</h3>
+      <p class="logout-modal-desc">Bạn có muốn đăng xuất không?</p>
+      <div class="logout-modal-actions">
+        <button type="button" class="btn-confirm" id="confirmLogoutBtn">Có</button>
+        <button type="button" class="btn-cancel" id="cancelLogoutBtn">Không</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MODAL CHI TIẾT ĐƠN HÀNG ================= -->
+  <div class="user-modal-overlay" id="orderDetailModal" style="display: none;">
+    <div class="order-detail-modal-box">
+      <div class="modal-header">
+        <h3 id="modalOrderTitle">Chi tiết đơn hàng</h3>
+        <button type="button" class="close-modal-btn" id="closeOrderDetailModal">&times;</button>
+      </div>
+      <div class="modal-body" id="modalOrderBody">
+        <!-- Render thông tin chi tiết đơn hàng -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="user-toast" id="userToast"></div>
+
+  <!-- Footer (giữ nguyên không sửa đổi) -->
+  <div id="footer"></div>
+  <script src="/js/components/header.js"></script>
+  <script src="/js/components/footer.js"></script>
+  <script src="/js/components/component.js"></script>
+  <script src="/js/pages/user.js"></script>
+</body>
+</html>
