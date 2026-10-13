@@ -38,5 +38,7 @@ async function loadSearchBox() {
 }
 
 
-loadSearchBox();
-loadMenuCategory();
+function initHeader() {
+  loadSearchBox();
+  loadMenuCategory();
+}
